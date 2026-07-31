@@ -6,6 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Case Mix Audit &mdash; DISC Centers of America</title>
 <meta name="description" content="A retrospective, aggregate audit of lumbar and cervical case mix against published imaging criteria. No patient data is stored.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#eceff5}
   body{-webkit-text-size-adjust:100%}
@@ -19,7 +22,6 @@
 </head>
 <body>
 <div class="page-wrap">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   #cma{
     --blue:#1a3d8f; --blue-dk:#132c69; --red:#d81020; --gold:#f5b820;
@@ -37,7 +39,9 @@
     padding:15px clamp(18px,4vw,44px);font-size:14px;font-weight:600;
     letter-spacing:.16em;text-transform:uppercase;display:flex;
     justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  #cma .gear{cursor:pointer;color:var(--gold);letter-spacing:.12em;white-space:nowrap}
+  #cma .gear{cursor:pointer;color:var(--gold);letter-spacing:.12em;white-space:nowrap;
+    background:none;border:none;font-family:var(--face);font-size:14px;
+    font-weight:600;text-transform:uppercase;letter-spacing:.16em;padding:0}
   #cma .gear:hover{color:#fff}
 
   #cma .tracks,#cma .settings,#cma #quiz,#cma #results{
@@ -116,6 +120,18 @@
     margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
   #cma .extrap b{color:var(--ink);font-weight:600}
 
+  #cma .nullres{background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--ink3);padding:28px 30px;margin-bottom:20px}
+  #cma .nullres .rbig{color:var(--ink3)}
+  #cma .nullres .nav{margin:24px 0 0}
+  #cma .exmp{background:#fff;border:1px solid var(--line);padding:18px 20px;
+    margin-top:22px}
+  #cma .exlab{font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink3);font-weight:700;margin-bottom:10px}
+  #cma .exmp p{font-size:clamp(15px,2.3vw,17px);color:var(--ink2);line-height:1.6;
+    max-width:680px}
+  #cma .exmp b{color:var(--ink);font-weight:700}
+
   #cma .clean{background:var(--goldtint);border:1px solid var(--line);
     border-left:6px solid var(--gold);padding:28px 30px;margin-bottom:20px}
   #cma .clean .rbig{color:#c28f0a}
@@ -175,6 +191,58 @@
     border:2px solid var(--line);cursor:pointer}
   #cma .pill.on{border-color:var(--gold);background:var(--goldtint);color:var(--blue)}
 
+  #cma .primer{font-size:clamp(15px,2.3vw,17px);color:var(--ink2);line-height:1.6;
+    max-width:720px;border-left:4px solid var(--gold);padding:4px 0 4px 16px;
+    margin:-16px 0 28px}
+
+  #cma .counter{background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--blue);padding:28px 30px;margin-bottom:26px}
+  #cma .counter .rbig{color:var(--blue)}
+  #cma .rnote{font-size:clamp(15px,2.4vw,17px);color:var(--ink2);line-height:1.55;
+    max-width:680px;margin-top:8px}
+
+  #cma .try{background:#fff;border:1px solid var(--line);
+    border-left:6px solid var(--gold);padding:26px 30px;margin-bottom:22px}
+  #cma .try h4{font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink3);font-weight:700;margin-bottom:12px}
+  #cma .try p{font-size:clamp(16px,2.5vw,19px);color:var(--ink);line-height:1.6;
+    max-width:740px}
+  #cma .try .tryframe{font-size:clamp(14px,2.1vw,16px);color:var(--ink3);
+    line-height:1.55;margin-bottom:12px}
+
+  #cma .bootfail{padding:34px clamp(18px,4vw,44px) 40px}
+  #cma .bootfail h3{font-size:clamp(23px,4vw,31px);font-weight:700;color:var(--ink);
+    line-height:1.18;margin-bottom:12px}
+  #cma .bootfail p{font-size:clamp(16px,2.5vw,19px);color:var(--ink2);line-height:1.6;
+    max-width:640px}
+  #cma .bootfail a{color:var(--blue);font-weight:600;text-decoration:none}
+
+  #cma .close{background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--blue);padding:28px 30px;margin-bottom:22px}
+  #cma .close h3{font-size:clamp(23px,4vw,31px);font-weight:700;margin-bottom:12px;
+    line-height:1.18;color:var(--blue)}
+  #cma .close p{font-size:clamp(16px,2.5vw,19px);color:var(--ink2);line-height:1.6;
+    max-width:740px}
+
+  #cma .capture{border-top:1px solid var(--line);padding-top:22px;margin-bottom:8px}
+  #cma .capture h4{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink3);font-weight:700;margin-bottom:8px}
+  #cma .capture p{font-size:clamp(14px,2.1vw,16px);color:var(--ink3);line-height:1.55;
+    max-width:640px;margin-bottom:14px}
+  #cma .crow{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+  #cma .crow input{flex:1;min-width:220px;height:52px;padding:0 14px;
+    border:2px solid var(--line);background:#fff;color:var(--ink);
+    font-family:var(--face);font-size:19px}
+  #cma .crow input:focus{outline:none;border-color:var(--gold)}
+  #cma .crow .btn{padding:0 26px;height:52px}
+  #cma .cmsg{font-size:16px;color:var(--ink2);margin-top:10px;min-height:22px}
+
+  #cma .vh{position:absolute;width:1px;height:1px;overflow:hidden;
+    clip:rect(0 0 0 0);white-space:nowrap}
+  #cma button:focus-visible,#cma input:focus-visible,#cma a:focus-visible,
+  #cma summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  #cma .stamp{display:none}
+
   #cma .foot{background:var(--blue);color:#fff;padding:16px clamp(18px,4vw,44px);
     font-size:14px;letter-spacing:.06em;display:flex;justify-content:space-between;
     gap:12px;flex-wrap:wrap;margin-top:10px}
@@ -182,7 +250,8 @@
   @media (max-width:560px){
     #cma .track-btn{min-width:100%}
     #cma .qwrap{min-height:0}
-    #cma .headline,#cma .clean,#cma .card,#cma .turn{padding:22px 20px}
+    #cma .headline,#cma .clean,#cma .card,#cma .turn,#cma .nullres,
+    #cma .counter,#cma .try,#cma .close{padding:22px 20px}
     #cma .btn{width:100%;text-align:center}
     #cma .nav{gap:10px}
   }
@@ -195,11 +264,16 @@
     #cma .foot{border-bottom:none;border-top:2px solid #1a3d8f}
     #cma .toprule{background:#d81020}
     #cma #results{padding-left:0;padding-right:0}
-    #cma .headline,#cma .card,#cma .turn,#cma .clean{break-inside:avoid;
-      background:#fafafa}
+    #cma .headline,#cma .card,#cma .turn,#cma .clean,
+    #cma .counter,#cma .try,#cma .close{break-inside:avoid;background:#fafafa}
+    #cma .capture,#cma .nullres .nav{display:none !important}
+    #cma .nullres{break-inside:avoid;background:#fafafa}
     #cma details{display:block}
     #cma .ffill{background:#1a3d8f}
     #cma .ffill.acc{background:#d81020}
+    #cma .stamp{display:block;font-size:13px;letter-spacing:.08em;
+      text-transform:uppercase;color:#4d586c;border-bottom:1px solid #dde2ec;
+      padding-bottom:10px;margin-bottom:22px}
   }
 
   #cma .annual{margin:26px -30px -28px;padding:24px 30px;background:#fbeef0;
@@ -221,22 +295,23 @@
   <div class="toprule"></div>
   <div class="eyebrow">
     <span>Case Mix Audit &nbsp;&middot;&nbsp; DISC Centers of America</span>
-    <span class="gear" onclick="toggleSettings()">Settings</span>
+    <button class="gear" id="gearBtn" type="button" aria-expanded="false"
+      aria-controls="settings" onclick="toggleSettings()">Settings</button>
   </div>
 
   <div class="tracks" id="tracks">
-    <button class="track-btn on" id="tb-lumbar" onclick="setTrack('lumbar')">
-      Lumbar<small>Your last 25 low back cases</small></button>
-    <button class="track-btn" id="tb-cervical" onclick="setTrack('cervical')">
-      Cervical<small>Your last 25 neck cases</small></button>
+    <button class="track-btn on" type="button" id="tb-lumbar" aria-pressed="true"
+      onclick="setTrack('lumbar')">Lumbar<small></small></button>
+    <button class="track-btn" type="button" id="tb-cervical" aria-pressed="false"
+      onclick="setTrack('cervical')">Cervical<small></small></button>
   </div>
 
   <div class="settings" id="settings">
     <h4>Adjustable parameters</h4>
     <div class="srow">
       <span>Sample size</span>
-      <button class="pill on" id="p25" onclick="setSample(25)">Last 25</button>
-      <button class="pill" id="p50" onclick="setSample(50)">Last 50</button>
+      <button class="pill on" type="button" id="p25" onclick="setSample(25)">Last 25</button>
+      <button class="pill" type="button" id="p50" onclick="setSample(50)">Last 50</button>
     </div>
     <div class="fine">A larger sample takes longer to review but produces a steadier
       result. Changing the sample size or the region resets the audit.</div>
@@ -245,6 +320,12 @@
   <div id="quiz">
     <h1 id="qtitle"></h1>
     <div class="deck" id="qdeck"></div>
+    <div class="primer" id="primer">Estimates are fine on the first three questions.
+      The fourth one is where the gap usually hides, so it is worth opening actual
+      charts for. Where you refer out rather than order directly, count a case as
+      imaged if a study was done and a report came back to you. Everything here
+      counts what happened to a case. None of it judges whether a given decision was
+      correct at the time.</div>
     <div class="prog" id="prog"></div>
     <div class="qwrap">
       <div class="qnum" id="qnum"></div>
@@ -252,70 +333,83 @@
       <div class="qhelp" id="qhelp"></div>
       <div class="src" id="qsrc"></div>
       <div class="entry">
-        <button onclick="bump(-1)">&minus;</button>
-        <input type="text" inputmode="numeric" id="qinput" oninput="typed(this.value)">
-        <button onclick="bump(1)">+</button>
+        <button type="button" aria-label="Decrease count" onclick="bump(-1)">&minus;</button>
+        <label class="vh" for="qinput" id="qlabel">Count</label>
+        <input type="text" inputmode="numeric" autocomplete="off" id="qinput"
+          oninput="typed(this.value)" onblur="syncInput()" onkeydown="keyed(event)">
+        <button type="button" aria-label="Increase count" onclick="bump(1)">+</button>
         <span class="ofn" id="qof"></span>
       </div>
     </div>
     <div class="nav">
-      <button class="btn ghost" id="backBtn" onclick="prev()">Back</button>
-      <button class="btn" id="nextBtn" onclick="next()">Next</button>
+      <button class="btn ghost" type="button" id="backBtn" onclick="prev()">Back</button>
+      <button class="btn" type="button" id="nextBtn" onclick="next()">Next</button>
     </div>
   </div>
 
-  <div id="results" class="res">
+  <div id="results" class="res" role="region" aria-live="polite"
+    aria-label="Audit result">
+    <div class="stamp" id="stamp"></div>
     <h1 id="rtitle"></h1>
-    <div class="deck">Reported in both directions. Nothing here evaluates an
-      individual patient.</div>
+    <div class="deck" id="rdeck">Reported in both directions. Nothing here evaluates
+      an individual patient.</div>
 
     <div id="mainResult"></div>
-
-    <div class="card">
-      <div class="clab" id="revLab"></div>
-      <div class="cnum" id="revNum">&mdash;</div>
-      <div class="cnote" id="revNote"></div>
-    </div>
+    <div id="revResult"></div>
 
     <div class="funnel" id="funnel"></div>
 
-    <div class="turn">
+    <div class="turn" id="turnBlock">
       <div class="premise" id="premise"></div>
-      <h3>What happens to those cases matters more than the count.</h3>
-      <p>A case that meets criteria and never gets imaged doesn't disappear. It gets
-      managed as general spine pain, or it leaves and turns up somewhere else. The
-      difference a disc specialist makes isn't ordering more scans &mdash; it's
-      reading stage and morphology, knowing which findings change a plan and which
-      are incidental, and running a protocol that matches what's actually on the
-      film.</p>
+      <h3>These are the cases that decide what kind of practice you run.</h3>
+      <p id="consequence"></p>
+    </div>
+
+    <div class="try" id="tryBlock">
+      <h4>One thing to check this week</h4>
+      <p class="tryframe">A records question, not a care question. Nothing below
+      concerns what any patient should have had or should get.</p>
+      <p id="tryText"></p>
+    </div>
+
+    <div class="close">
+      <h3>Ordering the study is the easy half.</h3>
+      <p>Any DC can send a patient for an MRI. The work that matters starts when the
+      film comes back: reading stage and morphology, separating the findings that
+      change a plan from the ones that turn up in half of asymptomatic people the
+      same age, and running a protocol built around what the image actually shows.
+      That is a learnable skill, and it is most of what separates a disc practice
+      from a pain practice.</p>
       <div class="cta">
-        <a class="go" href="https://freechiroevent.com" target="_blank" rel="noopener">FreeChiroEvent.com</a>
-        <span class="ph">or call Lacey at <a href="tel:8889909660">888-990-9660</a></span>
+        <a class="go" id="ctaGo" href="https://freechiroevent.com" target="_blank" rel="noopener">FreeChiroEvent.com</a>
+        <span class="ph">or call Lacey at <a href="tel:8889909660" id="ctaTel">888-990-9660</a></span>
       </div>
     </div>
 
-    <details>
+    <div id="capture"></div>
+
+    <details id="calcDetails">
       <summary>How this is calculated</summary>
       <div class="fine" id="calcFine"></div>
     </details>
 
     <div class="nav">
-      <button class="btn ghost" onclick="window.print()">Print or save</button>
-      <button class="btn ghost" onclick="restart()">Start over</button>
+      <button class="btn ghost" type="button" onclick="doPrint()">Print or save</button>
+      <button class="btn ghost" type="button" onclick="restart()">Start over</button>
     </div>
   </div>
 
   <div class="foot"><span>DISC Centers of America</span>
-    <span>Aggregate audit &mdash; no patient data stored</span></div>
+    <span>Aggregate audit &nbsp;&middot;&nbsp; no patient data collected</span></div>
 </div>
 
 <script>
-var SAMPLE = 25, TRACK = 'lumbar', step = 0;
+var SAMPLE = 25, TRACK = 'lumbar';
 
 var TRACKS = {
   lumbar: {
     noun: "low back patients",
-    deck: "Your last N low back patients, measured against published imaging criteria. Nothing is stored.",
+    deck: "Your last N low back patients, measured against published imaging criteria. No patient data leaves your browser.",
     rtitle: "Your last N low back patients, against the criteria.",
     region: "low back",
     volTitle: "One estimate, to scale it.",
@@ -354,7 +448,7 @@ var TRACKS = {
   },
   cervical: {
     noun: "neck patients",
-    deck: "Your last N neck patients, measured against published imaging criteria. Nothing is stored.",
+    deck: "Your last N neck patients, measured against published imaging criteria. No patient data leaves your browser.",
     rtitle: "Your last N neck patients, against the criteria.",
     region: "neck",
     volTitle: "One estimate, to scale it.",
@@ -394,103 +488,295 @@ var TRACKS = {
   }
 };
 
+/* ------------------------------------------------------------------
+   CONFIG  — the three switches worth knowing about.
+   ANALYTICS         events fire into dataLayer / gtag / plausible if present
+   RESUME            keeps in-progress answers for this browser tab only
+   CAPTURE_ENDPOINT  set a POST url to turn on the optional "email me this"
+                     block. Left empty, nothing renders and nothing is sent.
+   ------------------------------------------------------------------ */
+var ANALYTICS = true;
+var RESUME = true;
+var CAPTURE_ENDPOINT = '';
+
+TRACKS.lumbar.consequence =
+  "A case that meets criteria and never gets a real picture still has to go " +
+  "somewhere. Usually it gets managed as general low back pain, plateaus a few " +
+  "weeks into care, and quietly drops off the schedule. Sometimes it escalates and " +
+  "comes back as a surgical decision that someone else made without you. Either " +
+  "way it leaves the building unresolved, and at the rate your sample just showed, " +
+  "it keeps happening.";
+TRACKS.cervical.consequence =
+  "A neck case with radiculopathy that persisted past the radiographs still has to " +
+  "go somewhere. Usually it gets managed as mechanical neck pain, plateaus, and " +
+  "quietly drops off the schedule. Sometimes it escalates and comes back as a " +
+  "surgical decision that someone else made without you. Either way it leaves the " +
+  "building unresolved, and at the rate your sample just showed, it keeps happening.";
+
+TRACKS.lumbar.tryText =
+  "Pull the charts behind that number and follow each low back case forward. Did " +
+  "it finish its plan of care, or did it stop showing up. If it went out for " +
+  "imaging or referral, did a report ever come back, and is it in the file. The " +
+  "count describes the shape of your caseload. The charts tell you what happened " +
+  "to the people in it.";
+TRACKS.cervical.tryText =
+  "Pull the charts behind that number and follow each neck case forward. Did it " +
+  "finish its plan of care, or did it stop showing up. If it went out for imaging " +
+  "or referral, did a report ever come back, and is it in the file. The count " +
+  "describes the shape of your caseload. The charts tell you what happened to the " +
+  "people in it.";
+
+/* ---- instrumentation: provider agnostic, silent if nothing is installed ---- */
+function track(name, props){
+  if(!ANALYTICS) return;
+  var d = {region: TRACK, sample: SAMPLE};
+  if(props) for(var k in props) if(props.hasOwnProperty(k)) d[k] = props[k];
+  try{
+    if(window.dataLayer && window.dataLayer.push){
+      var g = {event: name};
+      for(var j in d) if(d.hasOwnProperty(j)) g[j] = d[j];
+      window.dataLayer.push(g);
+    } else if(typeof window.gtag === 'function'){
+      window.gtag('event', name, d);
+    }
+    if(typeof window.plausible === 'function') window.plausible(name, {props: d});
+  }catch(e){}
+}
+
+/* ---- resume: aggregate counts only, this tab only, never transmitted ---- */
+var SKEY = 'cma-audit-v2';
+function persist(){
+  if(!RESUME) return;
+  try{
+    window.sessionStorage.setItem(SKEY,
+      JSON.stringify({s: SAMPLE, t: TRACK, st: STATE, v: VIEW}));
+  }catch(e){}
+}
+function forget(){ try{ window.sessionStorage.removeItem(SKEY); }catch(e){} }
+function restore(){
+  if(!RESUME) return false;
+  var d;
+  try{
+    var raw = window.sessionStorage.getItem(SKEY);
+    if(!raw) return false;
+    d = JSON.parse(raw);
+  }catch(e){ return false; }
+  if(!d || (d.s !== 25 && d.s !== 50) || !d.st) return false;
+  SAMPLE = d.s;
+  TRACK = (d.t === 'cervical') ? 'cervical' : 'lumbar';
+  ['lumbar','cervical'].forEach(function(t){
+    var keys = TRACKS[t].qs.map(function(q){ return q.key; }).concat(['np']);
+    keys.forEach(function(k){
+      var v = d.st[t] ? d.st[t][k] : undefined;
+      if(typeof v === 'number' && isFinite(v) && v >= 0) STATE[t][k] = Math.floor(v);
+    });
+    var vv = d.v ? d.v[t] : null;
+    if(vv){
+      VIEW[t].step = Math.min(Math.max(0, vv.step | 0), TRACKS[t].qs.length);
+      VIEW[t].done = !!vv.done;
+    }
+  });
+  return true;
+}
+
 function volQ(){
   var T = TRACKS[TRACK];
   return {key:'np', title:T.volTitle, text:T.volText,
     help:"The only question you don\u2019t need charts for \u2014 an estimate is fine. It is used solely to extrapolate an annual figure and does not affect the audit result itself.",
-    src:"", of:null, max:400, stepBy:5};
+    src:"", of:null, min:1, max:400, stepBy:5};
 }
 
-var S = {};
-function resetState(){
-  S = {np:20};
-  TRACKS[TRACK].qs.forEach(function(q){ S[q.key] = 0; });
+// Funnel row labels live per track. Row 3 is the correct outcome, so it is not
+// flagged with the accent colour; only the films-only row is.
+var FUNNEL = {
+  lumbar: [
+    ['Persisting past six weeks despite conservative care','persist',false,false],
+    ['With nerve-root signs','root',false,false],
+    ['Received MRI or CT','adv',false,false],
+    ['Films only, nothing further','xray',true,true]
+  ],
+  cervical: [
+    ['Persisting or increasing past six weeks','persist',false,false],
+    ['With radicular signs','root',false,false],
+    ['Received MRI or CT','adv',false,false],
+    ['Radiographs, never escalated','xray',true,true]
+  ]
+};
+
+/* ---- state: one answer set and one view position per track ---- */
+var STATE = {}, VIEW = {};
+
+function blankState(t){
+  var s = {np:20};
+  TRACKS[t].qs.forEach(function(q){ s[q.key] = 0; });
+  return s;
 }
+function resetAll(){
+  STATE = {lumbar: blankState('lumbar'), cervical: blankState('cervical')};
+  VIEW  = {lumbar:{step:0, done:false}, cervical:{step:0, done:false}};
+}
+function S(){ return STATE[TRACK]; }
+function V(){ return VIEW[TRACK]; }
 function QS(){ return TRACKS[TRACK].qs.concat([volQ()]); }
 
 function ceilOf(q){
   if(q.of === 'sample') return SAMPLE;
-  if(q.of === 'remainder') return Math.max(0, S.root - S.adv);
-  if(q.of) return S[q.of];
+  if(q.of === 'remainder') return Math.max(0, S().root - S().adv);
+  if(q.of) return S()[q.of];
   return q.max;
 }
 function stepOf(q){ return q.stepBy || 1; }
+function floorOf(q){ return q.min || 0; }
 
-function toggleSettings(){
-  var el = document.getElementById('settings');
-  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+function hasData(){
+  var any = false;
+  ['lumbar','cervical'].forEach(function(t){
+    TRACKS[t].qs.forEach(function(q){ if(STATE[t][q.key] > 0) any = true; });
+  });
+  return any;
 }
-function setTrack(t){
-  if(t === TRACK) return;
-  TRACK = t;
-  document.getElementById('tb-lumbar').className = 'track-btn' + (t==='lumbar'?' on':'');
-  document.getElementById('tb-cervical').className = 'track-btn' + (t==='cervical'?' on':'');
-  restart();
-}
-function setSample(n){
-  SAMPLE = n;
-  document.getElementById('p25').className = 'pill' + (n===25?' on':'');
-  document.getElementById('p50').className = 'pill' + (n===50?' on':'');
-  restart();
-}
+
 function clamp(){
   TRACKS[TRACK].qs.forEach(function(q){
-    S[q.key] = Math.min(S[q.key], ceilOf(q));
+    S()[q.key] = Math.min(S()[q.key], ceilOf(q));
   });
 }
 
+/* ---- chrome ---- */
+function toggleSettings(){
+  var el = document.getElementById('settings'),
+      open = el.style.display !== 'block';
+  el.style.display = open ? 'block' : 'none';
+  document.getElementById('gearBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function paintTracks(){
+  ['lumbar','cervical'].forEach(function(t){
+    var b = document.getElementById('tb-' + t), on = (t === TRACK);
+    b.className = 'track-btn' + (on ? ' on' : '');
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.querySelector('small').textContent = 'Your last ' + SAMPLE +
+      (t === 'lumbar' ? ' low back cases' : ' neck cases');
+  });
+}
+function paintPills(){
+  document.getElementById('p25').className = 'pill' + (SAMPLE === 25 ? ' on' : '');
+  document.getElementById('p50').className = 'pill' + (SAMPLE === 50 ? ' on' : '');
+}
+function toTop(){
+  try{
+    var el = document.getElementById('cma');
+    if(el && el.scrollIntoView) el.scrollIntoView({block:'start'});
+  }catch(e){}
+}
+function showQuiz(){
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+}
+
+function setTrack(t){
+  if(t === TRACK) return;
+  TRACK = t;
+  track('audit_region_switch');
+  paintTracks();
+  if(V().done){ show(); } else { showQuiz(); render(); }
+  toTop();
+}
+function setSample(n){
+  if(n === SAMPLE) return;
+  if(hasData() && !window.confirm(
+     'Changing the sample size clears both audits and starts over. Continue?')) return;
+  SAMPLE = n;
+  paintPills(); resetAll(); paintTracks(); showQuiz(); render(); toTop();
+  track('audit_sample_change');
+}
+
+/* ---- stepper ---- */
 function render(){
-  var T = TRACKS[TRACK], qs = QS(), q = qs[step];
+  var T = TRACKS[TRACK], qs = QS(), st = V().step, q = qs[st];
+  if(!q){ V().step = 0; st = 0; q = qs[0]; }   // stale or corrupt restored step
   document.getElementById('qtitle').textContent = q.title;
   document.getElementById('qdeck').textContent = T.deck.replace('N', SAMPLE);
-  document.getElementById('qnum').textContent =
-    'Question ' + (step+1) + ' of ' + qs.length;
-  document.getElementById('qtext').textContent = q.text.replace('N', SAMPLE);
+  document.getElementById('qnum').textContent = 'Question ' + (st+1) + ' of ' + qs.length;
+  var qt = q.text.replace('N', SAMPLE);
+  document.getElementById('qtext').textContent = qt;
   document.getElementById('qhelp').textContent = q.help;
+  document.getElementById('qlabel').textContent = qt;
+
   var src = document.getElementById('qsrc');
   src.textContent = q.src;
   src.style.display = q.src ? 'block' : 'none';
-  document.getElementById('qinput').value = S[q.key];
-  var c = ceilOf(q);
-  document.getElementById('qof').textContent = q.of ? 'of ' + c : '';
-  document.getElementById('backBtn').style.visibility = step ? 'visible' : 'hidden';
+
+  syncInput();
+  document.getElementById('qof').textContent = q.of ? 'of ' + ceilOf(q) : '';
+  document.getElementById('backBtn').style.visibility = st ? 'visible' : 'hidden';
   document.getElementById('nextBtn').textContent =
-    step === qs.length-1 ? 'See results' : 'Next';
+    st === qs.length-1 ? 'See results' : 'Next';
+
   var p = '';
-  for(var i=0;i<qs.length;i++) p += '<div class="pseg' + (i<=step?' on':'') + '"></div>';
+  for(var i=0;i<qs.length;i++) p += '<div class="pseg' + (i<=st?' on':'') + '"></div>';
   document.getElementById('prog').innerHTML = p;
+
+  document.getElementById('primer').style.display = st === 0 ? 'block' : 'none';
+  persist();
 }
 
+function syncInput(){
+  var q = QS()[V().step];
+  document.getElementById('qinput').value = S()[q.key];
+}
 function bump(d){
-  var q = QS()[step], c = ceilOf(q);
-  var v = Math.max(0, S[q.key] + d*stepOf(q));
+  var q = QS()[V().step], c = ceilOf(q);
+  var v = Math.max(floorOf(q), S()[q.key] + d*stepOf(q));
   if(c !== null && c !== undefined) v = Math.min(v, c);
-  S[q.key] = v;
+  S()[q.key] = v;
   clamp();
-  render();
+  syncInput();
+  document.getElementById('qof').textContent = q.of ? 'of ' + ceilOf(q) : '';
 }
 function typed(val){
-  var q = QS()[step], c = ceilOf(q);
-  var n = parseInt(String(val).replace(/[^0-9]/g,''), 10);
-  if(isNaN(n)){ S[q.key] = 0; clamp(); return; }
+  // An empty field means "mid-edit", not zero. Writing 0 here used to cascade
+  // through clamp() and wipe every downstream answer.
+  var raw = String(val).replace(/[^0-9]/g,'');
+  if(raw === '') return;
+  var q = QS()[V().step], c = ceilOf(q), n = parseInt(raw, 10);
+  if(isNaN(n)) return;
   if(c !== null && c !== undefined && n > c){
     n = c;
     document.getElementById('qinput').value = n;
   }
-  S[q.key] = n;
+  S()[q.key] = n;
   clamp();
+  persist();
+}
+function keyed(e){
+  if(e && (e.key === 'Enter' || e.keyCode === 13)){
+    e.preventDefault();
+    next();
+  }
 }
 function next(){
+  syncInput();
   var qs = QS();
-  if(step < qs.length-1){ step++; clamp(); render(); }
-  else { show(); }
+  if(V().step === 0) track('audit_start');
+  if(V().step < qs.length-1){
+    V().step++; clamp(); render();
+    track('audit_step', {step: V().step + 1, of: qs.length});
+  } else { show(); toTop(); }
 }
-function prev(){ if(step){ step--; render(); } }
+function prev(){
+  syncInput();
+  if(V().step){ V().step--; render(); }
+}
 function restart(){
-  step = 0; resetState();
-  document.getElementById('results').style.display = 'none';
-  document.getElementById('quiz').style.display = 'block';
-  render();
+  if(hasData() && !window.confirm('Start over? This clears both audits.')) return;
+  forget(); resetAll(); paintTracks(); showQuiz(); render(); toTop();
+  track('audit_restart');
+}
+function doPrint(){ track('audit_print'); window.print(); }
+function backToQuestions(){
+  V().done = false; V().step = 0;
+  showQuiz(); render(); toTop();
+  track('audit_back_to_questions');
 }
 function round10(n){
   if(n <= 0) return 0;
@@ -498,29 +784,74 @@ function round10(n){
   return Math.round(n/10)*10;
 }
 
+/* ---- results ---- */
 function show(){
-  var T = TRACKS[TRACK];
-  var gap = Math.max(0, S.root - S.adv);
-  var annual = round10((gap / SAMPLE) * S.np * 12);
-  var revAnnual = round10((S.early / SAMPLE) * S.np * 12);
+  var T = TRACKS[TRACK], st = S();
+  var gap = Math.max(0, st.root - st.adv);
+  var vol = Math.max(1, st.np);
+  var annual = round10((gap / SAMPLE) * vol * 12);
+  var revAnnual = round10((st.early / SAMPLE) * vol * 12);
+  V().done = true;
 
   document.getElementById('rtitle').textContent = T.rtitle.replace('N', SAMPLE);
+  document.getElementById('stamp').textContent =
+    T.region.charAt(0).toUpperCase() + T.region.slice(1) + ' audit  \u00b7  last ' +
+    SAMPLE + ' ' + T.noun + '  \u00b7  ' +
+    new Date().toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
 
-  var html = '';
-  if(gap === 0){
-    html = '<div class="clean"><div class="rlabel">' +
-      T.noun.charAt(0).toUpperCase() + T.noun.slice(1) +
-      ' in your sample who met published imaging criteria with no MRI or CT</div>' +
+  // Three different kinds of zero, and they must not look alike:
+  //   nothing entered      -> the evaluator clicking Next to reach the end
+  //   entered, none met    -> a real sample with no qualifying cases
+  //   met, all imaged      -> the earned clean result
+  var entered = false;
+  TRACKS[TRACK].qs.forEach(function(q){ if(st[q.key] > 0) entered = true; });
+
+  var html = '', full = true;
+  if(!entered){
+    full = false;
+    html = '<div class="nullres">' +
+      '<div class="rlabel">Nothing was entered, so there is nothing to audit ' +
+      'yet</div>' +
+      '<div class="rbig">&mdash;</div>' +
+      '<div class="nlab">The audit runs on your counts. Estimates are fine on the ' +
+      'first three questions, so this takes a couple of minutes even without ' +
+      'charts open.</div>' +
+      '<div class="exmp"><div class="exlab">What a filled-in audit looks like</div>' +
+      '<p>A DC enters 11 low back cases still symptomatic past six weeks, 6 of ' +
+      'those with nerve-root signs, 2 of those with an MRI or CT, and 3 that ' +
+      'stopped at plain films. His headline reads <b>4 of 25</b> met the criteria ' +
+      'with no advanced imaging, and <b>3 of those 4</b> had films and nothing ' +
+      'further. Underneath it, the reverse count shows how many he imaged early ' +
+      'without indication.</p></div>' +
+      '<div class="nav"><button class="btn" type="button" ' +
+      'onclick="backToQuestions()">Back to the questions</button></div>' +
+      '</div>';
+  } else if(st.root === 0){
+    // No case in the sample cleared both thresholds, so there is no gap to
+    // report and no clean bill of health to award either.
+    html = '<div class="nullres"><div class="rlabel">Of your last ' + SAMPLE + ' ' +
+      T.noun + ', this many met both criteria \u2014 symptoms past six weeks ' +
+      'despite conservative care, and ' + (TRACK==='lumbar'?'nerve-root':'radicular') +
+      ' signs</div>' +
       '<div class="rbig">0</div>' +
-      '<div class="nlab">Every case that met the criteria received advanced ' +
-      'imaging. That is the result you want, and it is uncommon.</div></div>';
+      '<div class="nlab">Nothing in this sample crossed the threshold, so there is ' +
+      'no gap to report and no imaging decision to audit. If that reads low against ' +
+      'what you see in the room, questions two and four are the ones worth checking ' +
+      'against charts rather than recall.</div></div>';
+  } else if(gap === 0){
+    html = '<div class="clean"><div class="rlabel">Of the ' + st.root + ' ' + T.noun +
+      ' in your sample who met published imaging criteria, this many had no MRI or ' +
+      'CT</div>' +
+      '<div class="rbig">0</div>' +
+      '<div class="nlab">Every case that met the criteria received advanced imaging. ' +
+      'That is the result you want, and it is uncommon.</div></div>';
   } else {
     html = '<div class="headline"><div class="rlabel">Of your last ' + SAMPLE + ' ' +
       T.noun + ', this many met published imaging criteria and had no MRI or CT</div>' +
       '<div class="rbig">' + gap + '<span class="of"> of ' + SAMPLE + '</span></div>' +
-      '<div class="nested"><div class="nnum">' + S.xray + ' of those ' + gap + '</div>' +
+      '<div class="nested"><div class="nnum">' + st.xray + ' of those ' + gap + '</div>' +
       '<div class="nlab">' + T.filmsLabel + ' ' + T.filmsNote + '</div></div>' +
-      '<div class="annual"><div class="alab">At roughly ' + S.np + ' ' + T.noun +
+      '<div class="annual"><div class="alab">At roughly ' + vol + ' ' + T.noun +
       ' a month, that pace works out to</div>' +
       '<div class="anum">' + annual + '<span> a year</span></div>' +
       '<div class="acav">An extrapolation, not a count &mdash; it multiplies a rate ' +
@@ -529,12 +860,19 @@ function show(){
   }
   document.getElementById('mainResult').innerHTML = html;
 
-  document.getElementById('revLab').textContent = T.revLab;
-  document.getElementById('revNum').textContent = S.early + ' of ' + SAMPLE;
-  document.getElementById('revNote').innerHTML = T.revNote +
-    '<br><br>Extrapolated, roughly ' + revAnnual + ' a year at your stated volume.';
+  // The reverse count carries the same visual weight as the gap. The claim that
+  // this is reported in both directions has to survive a glance, not just a read.
+  document.getElementById('revResult').innerHTML =
+    '<div class="counter"><div class="rlabel">' + T.revLab + '</div>' +
+    '<div class="rbig">' + st.early +
+    '<span class="of"> of ' + SAMPLE + '</span></div>' +
+    '<div class="rnote">' + T.revNote +
+    (st.early > 0 ? ' Extrapolated, roughly ' + revAnnual +
+      ' a year at your stated volume.' : '') + '</div></div>';
 
   document.getElementById('premise').innerHTML = T.premise;
+  document.getElementById('consequence').textContent = T.consequence;
+  document.getElementById('tryText').textContent = T.tryText;
   document.getElementById('calcFine').innerHTML =
     '<b>Sample.</b> Your last ' + SAMPLE + ' ' + T.noun + ' &mdash; not your last ' +
     SAMPLE + ' new patients. Every figure below is a share of that group.<br><br>' +
@@ -551,28 +889,141 @@ function show(){
     'about whether any particular patient warrants imaging.</em> It describes the ' +
     'shape of a caseload retrospectively, in aggregate.';
 
-  var rows = [
-    ['Persisting or increasing past six weeks', S.persist, false, false],
-    ['With nerve-root signs', S.root, false, false],
-    ['Received MRI or CT', S.adv, false, true],
-    ['Films only, nothing further', S.xray, true, true]
-  ];
   var fh = '';
-  rows.forEach(function(r){
-    var pct = SAMPLE ? (r[1]/SAMPLE)*100 : 0;
+  FUNNEL[TRACK].forEach(function(r){
+    var n = st[r[1]], pct = SAMPLE ? (n/SAMPLE)*100 : 0;
     fh += '<div class="frow' + (r[2]?' ind':'') + '"><div class="ftop"><span>' +
-      r[0] + '</span><span>' + r[1] + ' of ' + SAMPLE + '</span></div>' +
+      r[0] + '</span><span>' + n + ' of ' + SAMPLE + '</span></div>' +
       '<div class="ftrack"><div class="ffill' + (r[3]?' acc':'') +
       '" style="width:' + pct + '%"></div></div></div>';
   });
   document.getElementById('funnel').innerHTML = fh;
 
+  ['rdeck','revResult','funnel','turnBlock','tryBlock'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = full ? '' : 'none';
+  });
+
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('results').style.display = 'block';
+
+  renderCapture({region: T.region, sample: SAMPLE, met_criteria: st.root,
+    gap: gap, films_only: st.xray, early_imaged: st.early, monthly_volume: vol});
+  persist();
+  track('audit_complete', {gap: gap, films_only: st.xray, early_imaged: st.early,
+    met_criteria: st.root, volume: vol});
 }
 
-resetState();
-render();
+/* ---- optional result email. Renders nothing unless CAPTURE_ENDPOINT is set. ---- */
+function renderCapture(payload){
+  var host = document.getElementById('capture');
+  if(!CAPTURE_ENDPOINT){ host.innerHTML = ''; return; }
+  host.innerHTML =
+    '<div class="capture"><h4>Email yourself this result</h4>' +
+    '<p>Optional. Sends the aggregate figures on this page and nothing else. ' +
+    'No patient information is collected at any point.</p>' +
+    '<div class="crow"><label class="vh" for="capEmail">Email address</label>' +
+    '<input type="email" id="capEmail" autocomplete="email" ' +
+    'placeholder="you@yourpractice.com">' +
+    '<button class="btn" type="button" id="capBtn">Send it</button></div>' +
+    '<div class="cmsg" id="capMsg" role="status"></div></div>';
+  document.getElementById('capBtn').onclick = function(){ sendCapture(payload); };
+}
+function sendCapture(payload){
+  var el = document.getElementById('capEmail'),
+      msg = document.getElementById('capMsg'),
+      btn = document.getElementById('capBtn');
+  if(!el || !msg || !btn) return;
+  var email = (el.value || '').trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)){
+    msg.textContent = 'That address does not look complete. Check it and try again.';
+    return;
+  }
+  if(typeof window.fetch !== 'function'){
+    msg.textContent = 'This browser cannot send it. Call 888-990-9660 and Lacey ' +
+      'will take the numbers down.';
+    return;
+  }
+  btn.disabled = true;
+  msg.textContent = 'Sending.';
+
+  // Every exit re-enables the button. A request that hangs is still a failure the
+  // reader has to be able to act on.
+  var settled = false, timer;
+  function fail(){
+    if(settled) return;
+    settled = true;
+    if(timer) window.clearTimeout(timer);
+    btn.disabled = false;
+    msg.textContent = 'That did not go through. Try again, or call 888-990-9660.';
+  }
+  function win(){
+    if(settled) return;
+    settled = true;
+    if(timer) window.clearTimeout(timer);
+    msg.textContent = 'Sent. Check your inbox.';
+    track('audit_email_capture');
+  }
+  timer = window.setTimeout(fail, 12000);
+
+  var body = {email: email};
+  for(var k in payload) if(payload.hasOwnProperty(k)) body[k] = payload[k];
+  try{
+    window.fetch(CAPTURE_ENDPOINT, {method:'POST',
+      headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)})
+      .then(function(r){ if(r && r.ok) win(); else fail(); })
+      .catch(fail);
+  }catch(e){ fail(); }
+}
+
+// The methodology note is the credibility of the printed sheet, so open it for
+// printing whether or not the reader expanded it on screen.
+if(window.addEventListener){
+  window.addEventListener('beforeprint', function(){
+    var cd = document.getElementById('calcDetails');
+    if(cd) cd.open = true;
+  });
+}
+
+// If the script cannot start at all, the reader gets a plain explanation and a
+// phone number instead of a dead stepper with no controls that respond.
+function bootFail(){
+  var host = document.getElementById('cma');
+  if(!host) return;
+  host.innerHTML =
+    '<div class="toprule"></div>' +
+    '<div class="eyebrow"><span>Case Mix Audit &nbsp;&middot;&nbsp; ' +
+    'DISC Centers of America</span></div>' +
+    '<div class="bootfail"><h3>This audit did not load in your browser.</h3>' +
+    '<p>Nothing was lost and nothing was sent. A refresh usually clears it, and a ' +
+    'different browser almost always does. If it keeps happening, call Lacey at ' +
+    '<a href="tel:8889909660">888-990-9660</a>.</p></div>' +
+    '<div class="foot"><span>DISC Centers of America</span>' +
+    '<span>Aggregate audit &nbsp;&middot;&nbsp; no patient data collected</span></div>';
+}
+
+try{
+  resetAll();
+  var resumed = restore();
+  paintTracks();
+  paintPills();
+  clamp();
+  if(resumed && V().done) show(); else render();
+
+  var goEl = document.getElementById('ctaGo'),
+      telEl = document.getElementById('ctaTel');
+  if(goEl) goEl.addEventListener('click', function(){
+    track('audit_cta_click', {target:'site'}); });
+  if(telEl) telEl.addEventListener('click', function(){
+    track('audit_cta_click', {target:'phone'}); });
+}catch(bootErr){
+  // A corrupt resume payload is the likeliest cause, so clear it before bailing
+  // out. The next load then starts clean instead of failing again.
+  try{ forget(); }catch(e){}
+  try{ track('audit_boot_error'); }catch(e){}
+  bootFail();
+}
+
 </script>
 </div>
 </body>
