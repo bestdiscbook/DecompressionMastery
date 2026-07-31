@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Case Mix Audit &mdash; DISC Centers of America</title>
+<meta name="description" content="A retrospective, aggregate audit of lumbar and cervical case mix against published imaging criteria. No patient data is stored.">
+<style>
+  html,body{margin:0;padding:0;background:#eceff5}
+  body{-webkit-text-size-adjust:100%}
+  .page-wrap{max-width:1120px;margin:0 auto;background:#fff;
+    box-shadow:0 0 0 1px rgba(19,25,36,.06)}
+  @media print{
+    html,body{background:#fff}
+    .page-wrap{max-width:none;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  #cma{
+    --blue:#1a3d8f; --blue-dk:#132c69; --red:#d81020; --gold:#f5b820;
+    --ink:#131924; --ink2:#4d586c; --ink3:#78839a;
+    --line:#dde2ec; --panel:#f5f7fb; --goldtint:#fffaef;
+    --face:"Barlow Condensed","Oswald","Roboto Condensed","Arial Narrow",sans-serif;
+    background:#fff; color:var(--ink); font-family:var(--face);
+    padding:0 0 0 0; min-height:600px;
+  }
+  #cma *{box-sizing:border-box;margin:0;padding:0}
+
+  #cma .toprule{height:5px;background:var(--red)}
+
+  #cma .eyebrow{background:var(--blue);color:#fff;
+    padding:15px clamp(18px,4vw,44px);font-size:14px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;display:flex;
+    justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  #cma .gear{cursor:pointer;color:var(--gold);letter-spacing:.12em;white-space:nowrap}
+  #cma .gear:hover{color:#fff}
+
+  #cma .tracks,#cma .settings,#cma #quiz,#cma #results{
+    padding-left:clamp(18px,4vw,44px);padding-right:clamp(18px,4vw,44px)}
+
+  #cma .tracks{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  #cma .track-btn{font-family:var(--face);font-size:clamp(16px,2.4vw,19px);
+    font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:14px 20px;background:#fff;color:var(--ink3);
+    border:2px solid var(--line);cursor:pointer;flex:1;min-width:170px;
+    text-align:left;line-height:1.25}
+  #cma .track-btn small{display:block;font-size:14px;letter-spacing:.01em;
+    text-transform:none;font-weight:400;color:var(--ink3);margin-top:5px}
+  #cma .track-btn.on{border-color:var(--gold);background:var(--goldtint);
+    color:var(--blue)}
+  #cma .track-btn.on small{color:var(--ink2)}
+
+  #cma h1{font-size:clamp(30px,5.4vw,46px);font-weight:700;line-height:1.05;
+    margin:30px 0 8px;color:var(--ink)}
+  #cma .deck{font-size:clamp(16px,2.6vw,20px);color:var(--ink2);font-weight:400;
+    line-height:1.5;margin-bottom:30px;max-width:780px}
+
+  #cma .prog{display:flex;gap:6px;margin:0 0 34px}
+  #cma .pseg{height:5px;flex:1;background:var(--line)}
+  #cma .pseg.on{background:var(--gold)}
+
+  #cma .qwrap{min-height:310px}
+  #cma .qnum{font-size:14px;letter-spacing:.16em;color:var(--red);font-weight:700;
+    text-transform:uppercase;margin-bottom:12px}
+  #cma .qtext{font-size:clamp(24px,4.2vw,35px);font-weight:700;line-height:1.18;
+    margin-bottom:12px;max-width:780px;color:var(--ink)}
+  #cma .qhelp{font-size:clamp(16px,2.4vw,18px);color:var(--ink2);line-height:1.55;
+    max-width:720px;margin-bottom:22px}
+  #cma .src{font-size:clamp(14px,2.1vw,16px);color:var(--ink3);line-height:1.55;
+    max-width:720px;border-left:4px solid var(--blue);padding:2px 0 2px 16px;
+    margin-bottom:26px}
+
+  #cma .entry{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  #cma .entry button{width:56px;height:70px;font-size:30px;font-family:var(--face);
+    font-weight:700;background:#fff;color:var(--blue);border:2px solid var(--line);
+    cursor:pointer;line-height:1;flex:none}
+  #cma .entry button:hover{border-color:var(--gold);background:var(--goldtint)}
+  #cma .entry input{width:124px;height:70px;background:#fff;
+    border:2px solid var(--line);color:var(--ink);font-family:var(--face);
+    font-weight:700;font-size:clamp(36px,6vw,50px);text-align:center;
+    font-variant-numeric:tabular-nums}
+  #cma .entry input:focus{outline:none;border-color:var(--gold)}
+  #cma .ofn{font-size:17px;color:var(--ink3)}
+
+  #cma .nav{display:flex;gap:12px;margin:36px 0 40px;align-items:center;
+    flex-wrap:wrap}
+  #cma .btn{font-family:var(--face);font-size:20px;font-weight:700;
+    letter-spacing:.05em;padding:14px 30px;background:var(--red);color:#fff;
+    border:none;cursor:pointer}
+  #cma .btn:hover{background:#b70d1a}
+  #cma .btn.ghost{background:#fff;color:var(--ink2);border:2px solid var(--line)}
+  #cma .btn.ghost:hover{background:var(--panel);color:var(--blue);
+    border-color:var(--blue)}
+
+  #cma .res{display:none}
+
+  #cma .headline{background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--red);padding:28px 30px;margin-bottom:20px}
+  #cma .rlabel{font-size:clamp(16px,2.6vw,20px);color:var(--ink2);font-weight:400;
+    line-height:1.45;max-width:640px}
+  #cma .rbig{font-size:clamp(68px,13vw,112px);font-weight:700;color:var(--red);
+    line-height:.96;font-variant-numeric:tabular-nums;margin:8px 0 4px}
+  #cma .rbig .of{font-size:clamp(20px,3.4vw,30px);color:var(--ink3);font-weight:600}
+  #cma .nested{border-left:4px solid var(--gold);margin:20px 0 0;
+    padding:4px 0 4px 18px}
+  #cma .nnum{font-size:clamp(28px,5vw,40px);font-weight:700;line-height:1.1;
+    font-variant-numeric:tabular-nums;color:var(--blue)}
+  #cma .nlab{font-size:clamp(15px,2.4vw,17px);color:var(--ink2);line-height:1.5;
+    max-width:640px;margin-top:4px}
+  #cma .extrap{font-size:clamp(14px,2.2vw,16px);color:var(--ink3);line-height:1.55;
+    margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+  #cma .extrap b{color:var(--ink);font-weight:600}
+
+  #cma .clean{background:var(--goldtint);border:1px solid var(--line);
+    border-left:6px solid var(--gold);padding:28px 30px;margin-bottom:20px}
+  #cma .clean .rbig{color:#c28f0a}
+
+  #cma .card{background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--blue);padding:24px 30px;margin-bottom:20px}
+  #cma .cnum{font-size:clamp(30px,5.4vw,44px);font-weight:700;
+    font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0;
+    color:var(--blue)}
+  #cma .clab{font-size:clamp(16px,2.4vw,18px);color:var(--ink2);line-height:1.5}
+  #cma .cnote{font-size:clamp(14px,2.1vw,16px);color:var(--ink3);line-height:1.55;
+    margin-top:10px;max-width:700px}
+
+  #cma .funnel{margin-bottom:24px}
+  #cma .frow{margin-bottom:14px}
+  #cma .frow.ind{padding-left:24px;border-left:4px solid var(--gold)}
+  #cma .ftop{display:flex;justify-content:space-between;gap:12px;
+    font-size:clamp(15px,2.2vw,17px);color:var(--ink2);margin-bottom:6px}
+  #cma .ftrack{height:24px;background:var(--line)}
+  #cma .ffill{height:100%;background:var(--blue);transition:width .4s ease}
+  #cma .ffill.acc{background:var(--red)}
+
+  #cma .turn{background:var(--goldtint);border:1px solid var(--line);
+    border-left:6px solid var(--gold);padding:28px 30px;margin-bottom:22px}
+  #cma .premise{font-size:clamp(15px,2.4vw,17px);color:var(--ink2);line-height:1.6;
+    border-bottom:1px solid #e8dcbf;padding-bottom:18px;margin-bottom:18px}
+  #cma .premise b{color:var(--ink);font-weight:700}
+  #cma .premise i{color:var(--ink3);font-style:normal;font-size:.93em}
+  #cma .turn h3{font-size:clamp(23px,4vw,31px);font-weight:700;margin-bottom:12px;
+    line-height:1.18;color:var(--blue)}
+  #cma .turn p{font-size:clamp(16px,2.5vw,19px);color:var(--ink2);line-height:1.6;
+    max-width:740px}
+  #cma .cta{margin-top:22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  #cma .cta .go{font-size:20px;font-weight:700;background:var(--red);color:#fff;
+    text-decoration:none;padding:14px 28px;display:inline-block;letter-spacing:.04em}
+  #cma .cta .go:hover{background:#b70d1a}
+  #cma .cta .ph{font-size:18px;color:var(--ink2)}
+  #cma .cta .ph a{color:var(--blue);text-decoration:none;font-weight:600}
+
+  #cma details{border-top:1px solid var(--line);padding-top:16px;margin-top:10px}
+  #cma summary{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink3);cursor:pointer;font-weight:700}
+  #cma summary:hover{color:var(--blue)}
+  #cma .fine{font-size:clamp(14px,2.1vw,16px);color:var(--ink3);line-height:1.7;
+    margin-top:16px;max-width:840px}
+  #cma .fine b{color:var(--ink2)}
+  #cma .fine em{color:var(--red);font-style:normal;font-weight:700}
+
+  #cma .settings{display:none;background:var(--panel);border:1px solid var(--line);
+    border-left:6px solid var(--blue);padding:22px 26px;margin-top:22px}
+  #cma .settings h4{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:16px;font-weight:700}
+  #cma .srow{display:flex;align-items:center;gap:14px;margin-bottom:14px;
+    font-size:17px;color:var(--ink2);flex-wrap:wrap}
+  #cma .pill{font-family:var(--face);font-size:16px;font-weight:700;
+    padding:9px 18px;background:#fff;color:var(--ink3);
+    border:2px solid var(--line);cursor:pointer}
+  #cma .pill.on{border-color:var(--gold);background:var(--goldtint);color:var(--blue)}
+
+  #cma .foot{background:var(--blue);color:#fff;padding:16px clamp(18px,4vw,44px);
+    font-size:14px;letter-spacing:.06em;display:flex;justify-content:space-between;
+    gap:12px;flex-wrap:wrap;margin-top:10px}
+
+  @media (max-width:560px){
+    #cma .track-btn{min-width:100%}
+    #cma .qwrap{min-height:0}
+    #cma .headline,#cma .clean,#cma .card,#cma .turn{padding:22px 20px}
+    #cma .btn{width:100%;text-align:center}
+    #cma .nav{gap:10px}
+  }
+
+  @media print{
+    #cma{padding:0}
+    #cma #quiz,#cma .nav,#cma .gear,#cma .tracks,#cma .settings{display:none !important}
+    #cma .eyebrow,#cma .foot{background:#fff;color:#111;
+      border-bottom:2px solid #1a3d8f;padding-left:0;padding-right:0}
+    #cma .foot{border-bottom:none;border-top:2px solid #1a3d8f}
+    #cma .toprule{background:#d81020}
+    #cma #results{padding-left:0;padding-right:0}
+    #cma .headline,#cma .card,#cma .turn,#cma .clean{break-inside:avoid;
+      background:#fafafa}
+    #cma details{display:block}
+    #cma .ffill{background:#1a3d8f}
+    #cma .ffill.acc{background:#d81020}
+  }
+
+  #cma .annual{margin:26px -30px -28px;padding:24px 30px;background:#fbeef0;
+    border-top:1px solid #f0d5d9}
+  #cma .alab{font-size:clamp(15px,2.4vw,18px);color:var(--ink2);line-height:1.45;
+    max-width:620px}
+  #cma .anum{font-size:clamp(52px,9.5vw,84px);font-weight:700;color:var(--red);
+    line-height:1;font-variant-numeric:tabular-nums;margin:8px 0 2px}
+  #cma .anum span{font-size:clamp(19px,3.2vw,28px);color:var(--ink2);font-weight:600;
+    letter-spacing:.02em}
+  #cma .acav{font-size:clamp(13px,2vw,15px);color:var(--ink3);line-height:1.6;
+    margin-top:10px;max-width:660px}
+  @media (max-width:560px){
+    #cma .annual{margin:22px -20px -22px;padding:20px}
+  }
+</style>
+
+<div id="cma">
+  <div class="toprule"></div>
+  <div class="eyebrow">
+    <span>Case Mix Audit &nbsp;&middot;&nbsp; DISC Centers of America</span>
+    <span class="gear" onclick="toggleSettings()">Settings</span>
+  </div>
+
+  <div class="tracks" id="tracks">
+    <button class="track-btn on" id="tb-lumbar" onclick="setTrack('lumbar')">
+      Lumbar<small>Your last 25 low back cases</small></button>
+    <button class="track-btn" id="tb-cervical" onclick="setTrack('cervical')">
+      Cervical<small>Your last 25 neck cases</small></button>
+  </div>
+
+  <div class="settings" id="settings">
+    <h4>Adjustable parameters</h4>
+    <div class="srow">
+      <span>Sample size</span>
+      <button class="pill on" id="p25" onclick="setSample(25)">Last 25</button>
+      <button class="pill" id="p50" onclick="setSample(50)">Last 50</button>
+    </div>
+    <div class="fine">A larger sample takes longer to review but produces a steadier
+      result. Changing the sample size or the region resets the audit.</div>
+  </div>
+
+  <div id="quiz">
+    <h1 id="qtitle"></h1>
+    <div class="deck" id="qdeck"></div>
+    <div class="prog" id="prog"></div>
+    <div class="qwrap">
+      <div class="qnum" id="qnum"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="qhelp" id="qhelp"></div>
+      <div class="src" id="qsrc"></div>
+      <div class="entry">
+        <button onclick="bump(-1)">&minus;</button>
+        <input type="text" inputmode="numeric" id="qinput" oninput="typed(this.value)">
+        <button onclick="bump(1)">+</button>
+        <span class="ofn" id="qof"></span>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn ghost" id="backBtn" onclick="prev()">Back</button>
+      <button class="btn" id="nextBtn" onclick="next()">Next</button>
+    </div>
+  </div>
+
+  <div id="results" class="res">
+    <h1 id="rtitle"></h1>
+    <div class="deck">Reported in both directions. Nothing here evaluates an
+      individual patient.</div>
+
+    <div id="mainResult"></div>
+
+    <div class="card">
+      <div class="clab" id="revLab"></div>
+      <div class="cnum" id="revNum">&mdash;</div>
+      <div class="cnote" id="revNote"></div>
+    </div>
+
+    <div class="funnel" id="funnel"></div>
+
+    <div class="turn">
+      <div class="premise" id="premise"></div>
+      <h3>What happens to those cases matters more than the count.</h3>
+      <p>A case that meets criteria and never gets imaged doesn't disappear. It gets
+      managed as general spine pain, or it leaves and turns up somewhere else. The
+      difference a disc specialist makes isn't ordering more scans &mdash; it's
+      reading stage and morphology, knowing which findings change a plan and which
+      are incidental, and running a protocol that matches what's actually on the
+      film.</p>
+      <div class="cta">
+        <a class="go" href="https://freechiroevent.com" target="_blank" rel="noopener">FreeChiroEvent.com</a>
+        <span class="ph">or call Lacey at <a href="tel:8889909660">888-990-9660</a></span>
+      </div>
+    </div>
+
+    <details>
+      <summary>How this is calculated</summary>
+      <div class="fine" id="calcFine"></div>
+    </details>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="window.print()">Print or save</button>
+      <button class="btn ghost" onclick="restart()">Start over</button>
+    </div>
+  </div>
+
+  <div class="foot"><span>DISC Centers of America</span>
+    <span>Aggregate audit &mdash; no patient data stored</span></div>
+</div>
+
+<script>
+var SAMPLE = 25, TRACK = 'lumbar', step = 0;
+
+var TRACKS = {
+  lumbar: {
+    noun: "low back patients",
+    deck: "Your last N low back patients, measured against published imaging criteria. Nothing is stored.",
+    rtitle: "Your last N low back patients, against the criteria.",
+    region: "low back",
+    volTitle: "One estimate, to scale it.",
+    volText: "Roughly how many low back patients do you see in a typical month?",
+    filmsLabel: "of those had plain films and nothing further.",
+    filmsNote: "For the lumbar spine, radiographs do not evaluate the disc or the nerve root. A case that got films and stopped there is still an unimaged case.",
+    revLab: "Imaged early without indication",
+    revNote: "MRI or CT inside four weeks with no red flags and no nerve-root signs. ACR treats uncomplicated acute low back pain, with or without radiculopathy, as benign and self-limited, not warranting imaging studies.",
+    premise: "Degenerative findings are common in people with no symptoms at all. In a systematic review of 3,110 asymptomatic individuals, <b>modeled</b> disc bulge prevalence rose from 30% at age 20 to 84% at age 80, and disc protrusion from 29% to 43%. <b>A scan alone settles nothing</b> &mdash; findings only mean something read against the presentation. <i>Brinjikji et al., AJNR 2015;36(4):811-6. Figures are model-fitted estimates, not observed cohort rates.</i>",
+    calc: "<b>Criteria sources.</b> ACR Appropriateness Criteria, low back pain: imaging is considered for patients who have had up to six weeks of management with little or no improvement; those with persistent radiculopathic symptoms past six weeks and exam signs of nerve-root irritation should be imaged if they are candidates; uncomplicated acute low back pain does not warrant imaging studies.",
+    qs: [
+      {key:'persist', title:"Start with the ones that didn\u2019t resolve.",
+       text:"Of your last N low back patients, how many still had symptoms past six weeks despite conservative care?",
+       help:"Yours or a prior provider\u2019s, and at any point in the episode \u2014 not only at intake. A patient who presented acute and was still symptomatic at week eight counts here.",
+       src:"ACR: imaging is considered for patients who have had up to six weeks of management and physical therapy that resulted in little or no improvement.",
+       of:'sample'},
+      {key:'root', title:"Which ones showed nerve-root signs.",
+       text:"Of those, how many showed signs of nerve-root involvement at any point?",
+       help:"Radiating pain below the knee, dermatomal numbness or paresthesia, motor weakness, positive straight-leg raise.",
+       src:"ACR: patients with subacute or chronic low back pain or radiculopathy who have failed six weeks of conservative therapy, with exam signs of nerve-root irritation, should be imaged if they are candidates.",
+       of:'persist'},
+      {key:'adv', title:"Which of those got a real picture.",
+       text:"Of those, how many had MRI or CT \u2014 ordered by you, or already on file?",
+       help:"Advanced imaging only. Plain films are counted next, because for the lumbar spine an X-ray does not answer the disc question.",
+       src:"", of:'root'},
+      {key:'xray', title:"And which got films only.",
+       text:"Of the remainder, how many had plain films and nothing further?",
+       help:"This is usually where the gap hides, and it produces the sharpest line in your result. Worth checking the charts rather than estimating.",
+       src:"", of:'remainder'},
+      {key:'early', title:"Now the other direction.",
+       text:"Of your last N low back patients, how many had MRI or CT inside the first four weeks with no red flags and no nerve-root signs?",
+       help:"Reporting this is what makes the audit honest rather than one-directional.",
+       src:"ACR: uncomplicated acute low back pain, with or without radiculopathy, is a benign, self-limited condition that does not warrant any imaging studies.",
+       of:'sample'}
+    ]
+  },
+  cervical: {
+    noun: "neck patients",
+    deck: "Your last N neck patients, measured against published imaging criteria. Nothing is stored.",
+    rtitle: "Your last N neck patients, against the criteria.",
+    region: "neck",
+    volTitle: "One estimate, to scale it.",
+    volText: "Roughly how many neck patients do you see in a typical month?",
+    filmsLabel: "of those had radiographs and were never escalated.",
+    filmsNote: "For the cervical spine, radiographs ARE the appropriate initial study absent red flags. The gap is not that films were taken \u2014 it is that radiculopathy persisted and nothing followed them.",
+    revLab: "Advanced imaging used as first-line on uncomplicated neck pain",
+    revNote: "MRI or CT inside four weeks with no red flags and no radicular signs. ACR notes MRI is not a first-line modality for acute or worsening uncomplicated neck pain, and radiographs are the appropriate initial study absent red flags.",
+    premise: "Spondylotic change is extremely common on cervical imaging and frequently unrelated to symptoms. ACR notes these changes are commonly identified and <b>may produce both false-positive and false-negative findings</b>. <b>A scan alone settles nothing</b> &mdash; findings only mean something read against the presentation. <i>ACR Appropriateness Criteria: Cervical Neck Pain or Cervical Radiculopathy, JACR 2019.</i>",
+    calc: "<b>Criteria sources.</b> ACR Appropriateness Criteria, cervical neck pain or cervical radiculopathy: radiographs are appropriate as initial imaging absent red flag symptoms, or for unchanging chronic symptoms; noncontrast MRI is usually appropriate for new or increasing radiculopathy, given improved nerve-root definition; MRI is not considered a first-line modality for acute or worsening uncomplicated neck pain.<br><br><b>Outside this audit.</b> Myelopathic signs &mdash; gait disturbance, hand clumsiness, hyperreflexia, Hoffmann\u2019s sign, bowel or bladder change &mdash; are a separate and more urgent category with a different imaging pathway. They are not counted here, and this tool must not be used to triage them.",
+    qs: [
+      {key:'persist', title:"Start with the ones that didn\u2019t resolve.",
+       text:"Of your last N neck patients, how many still had symptoms past six weeks despite conservative care, or symptoms that were increasing?",
+       help:"Yours or a prior provider\u2019s, at any point in the episode. Increasing symptoms count regardless of duration.",
+       src:"ACR: noncontrast MRI is usually appropriate for assessment of new or increasing radiculopathy.",
+       of:'sample'},
+      {key:'root', title:"Which ones showed radicular signs.",
+       text:"Of those, how many showed signs of cervical nerve-root involvement at any point?",
+       help:"Dermatomal arm pain, numbness or paresthesia in the arm or hand, motor weakness, positive Spurling\u2019s. Myelopathic signs are a separate, more urgent category and are not counted here.",
+       src:"ACR: noncontrast MRI is usually appropriate for new or increasing radiculopathy due to improved nerve root definition.",
+       of:'persist'},
+      {key:'adv', title:"Which of those got advanced imaging.",
+       text:"Of those, how many had MRI or CT \u2014 ordered by you, or already on file?",
+       help:"Advanced imaging only, counted separately from radiographs.",
+       src:"", of:'root'},
+      {key:'xray', title:"And which stopped at radiographs.",
+       text:"Of the remainder, how many had plain films and nothing further?",
+       help:"Films are the right first study for neck pain. The question is whether anything followed them once radiculopathy persisted.",
+       src:"ACR: radiographs are appropriate as initial imaging for cervical or neck pain in the absence of red flag symptoms.",
+       of:'remainder'},
+      {key:'early', title:"Now the other direction.",
+       text:"Of your last N neck patients, how many went straight to MRI or CT inside four weeks with no red flags and no radicular signs?",
+       help:"Reporting this is what makes the audit honest rather than one-directional.",
+       src:"ACR: MRI is not considered a first-line imaging modality in the setting of acute or worsening uncomplicated neck pain.",
+       of:'sample'}
+    ]
+  }
+};
+
+function volQ(){
+  var T = TRACKS[TRACK];
+  return {key:'np', title:T.volTitle, text:T.volText,
+    help:"The only question you don\u2019t need charts for \u2014 an estimate is fine. It is used solely to extrapolate an annual figure and does not affect the audit result itself.",
+    src:"", of:null, max:400, stepBy:5};
+}
+
+var S = {};
+function resetState(){
+  S = {np:20};
+  TRACKS[TRACK].qs.forEach(function(q){ S[q.key] = 0; });
+}
+function QS(){ return TRACKS[TRACK].qs.concat([volQ()]); }
+
+function ceilOf(q){
+  if(q.of === 'sample') return SAMPLE;
+  if(q.of === 'remainder') return Math.max(0, S.root - S.adv);
+  if(q.of) return S[q.of];
+  return q.max;
+}
+function stepOf(q){ return q.stepBy || 1; }
+
+function toggleSettings(){
+  var el = document.getElementById('settings');
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+function setTrack(t){
+  if(t === TRACK) return;
+  TRACK = t;
+  document.getElementById('tb-lumbar').className = 'track-btn' + (t==='lumbar'?' on':'');
+  document.getElementById('tb-cervical').className = 'track-btn' + (t==='cervical'?' on':'');
+  restart();
+}
+function setSample(n){
+  SAMPLE = n;
+  document.getElementById('p25').className = 'pill' + (n===25?' on':'');
+  document.getElementById('p50').className = 'pill' + (n===50?' on':'');
+  restart();
+}
+function clamp(){
+  TRACKS[TRACK].qs.forEach(function(q){
+    S[q.key] = Math.min(S[q.key], ceilOf(q));
+  });
+}
+
+function render(){
+  var T = TRACKS[TRACK], qs = QS(), q = qs[step];
+  document.getElementById('qtitle').textContent = q.title;
+  document.getElementById('qdeck').textContent = T.deck.replace('N', SAMPLE);
+  document.getElementById('qnum').textContent =
+    'Question ' + (step+1) + ' of ' + qs.length;
+  document.getElementById('qtext').textContent = q.text.replace('N', SAMPLE);
+  document.getElementById('qhelp').textContent = q.help;
+  var src = document.getElementById('qsrc');
+  src.textContent = q.src;
+  src.style.display = q.src ? 'block' : 'none';
+  document.getElementById('qinput').value = S[q.key];
+  var c = ceilOf(q);
+  document.getElementById('qof').textContent = q.of ? 'of ' + c : '';
+  document.getElementById('backBtn').style.visibility = step ? 'visible' : 'hidden';
+  document.getElementById('nextBtn').textContent =
+    step === qs.length-1 ? 'See results' : 'Next';
+  var p = '';
+  for(var i=0;i<qs.length;i++) p += '<div class="pseg' + (i<=step?' on':'') + '"></div>';
+  document.getElementById('prog').innerHTML = p;
+}
+
+function bump(d){
+  var q = QS()[step], c = ceilOf(q);
+  var v = Math.max(0, S[q.key] + d*stepOf(q));
+  if(c !== null && c !== undefined) v = Math.min(v, c);
+  S[q.key] = v;
+  clamp();
+  render();
+}
+function typed(val){
+  var q = QS()[step], c = ceilOf(q);
+  var n = parseInt(String(val).replace(/[^0-9]/g,''), 10);
+  if(isNaN(n)){ S[q.key] = 0; clamp(); return; }
+  if(c !== null && c !== undefined && n > c){
+    n = c;
+    document.getElementById('qinput').value = n;
+  }
+  S[q.key] = n;
+  clamp();
+}
+function next(){
+  var qs = QS();
+  if(step < qs.length-1){ step++; clamp(); render(); }
+  else { show(); }
+}
+function prev(){ if(step){ step--; render(); } }
+function restart(){
+  step = 0; resetState();
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  render();
+}
+function round10(n){
+  if(n <= 0) return 0;
+  if(n < 10) return Math.round(n);
+  return Math.round(n/10)*10;
+}
+
+function show(){
+  var T = TRACKS[TRACK];
+  var gap = Math.max(0, S.root - S.adv);
+  var annual = round10((gap / SAMPLE) * S.np * 12);
+  var revAnnual = round10((S.early / SAMPLE) * S.np * 12);
+
+  document.getElementById('rtitle').textContent = T.rtitle.replace('N', SAMPLE);
+
+  var html = '';
+  if(gap === 0){
+    html = '<div class="clean"><div class="rlabel">' +
+      T.noun.charAt(0).toUpperCase() + T.noun.slice(1) +
+      ' in your sample who met published imaging criteria with no MRI or CT</div>' +
+      '<div class="rbig">0</div>' +
+      '<div class="nlab">Every case that met the criteria received advanced ' +
+      'imaging. That is the result you want, and it is uncommon.</div></div>';
+  } else {
+    html = '<div class="headline"><div class="rlabel">Of your last ' + SAMPLE + ' ' +
+      T.noun + ', this many met published imaging criteria and had no MRI or CT</div>' +
+      '<div class="rbig">' + gap + '<span class="of"> of ' + SAMPLE + '</span></div>' +
+      '<div class="nested"><div class="nnum">' + S.xray + ' of those ' + gap + '</div>' +
+      '<div class="nlab">' + T.filmsLabel + ' ' + T.filmsNote + '</div></div>' +
+      '<div class="annual"><div class="alab">At roughly ' + S.np + ' ' + T.noun +
+      ' a month, that pace works out to</div>' +
+      '<div class="anum">' + annual + '<span> a year</span></div>' +
+      '<div class="acav">An extrapolation, not a count &mdash; it multiplies a rate ' +
+      'from ' + SAMPLE + ' charts by a monthly volume you estimated, so it carries ' +
+      'the uncertainty of both. Rounded to reflect that.</div></div></div>';
+  }
+  document.getElementById('mainResult').innerHTML = html;
+
+  document.getElementById('revLab').textContent = T.revLab;
+  document.getElementById('revNum').textContent = S.early + ' of ' + SAMPLE;
+  document.getElementById('revNote').innerHTML = T.revNote +
+    '<br><br>Extrapolated, roughly ' + revAnnual + ' a year at your stated volume.';
+
+  document.getElementById('premise').innerHTML = T.premise;
+  document.getElementById('calcFine').innerHTML =
+    '<b>Sample.</b> Your last ' + SAMPLE + ' ' + T.noun + ' &mdash; not your last ' +
+    SAMPLE + ' new patients. Every figure below is a share of that group.<br><br>' +
+    '<b>Gap count</b> = cases with persistent or increasing symptoms despite ' +
+    'conservative care <b>and</b> nerve-root signs, minus those that received MRI or ' +
+    'CT. The films-only figure is a subset of that count, not an addition to it.' +
+    '<br><br><b>Annual figures</b> are extrapolations, not measurements. They ' +
+    'multiply a rate observed in ' + SAMPLE + ' charts by a monthly ' + T.region +
+    ' volume you estimated, so they carry the uncertainty of both, and they are ' +
+    'rounded rather than reported to the digit.<br><br>' + T.calc +
+    '<br><br><b>Scope.</b> This audit covers ' + T.region + ' presentations only. ' +
+    'The other region has different criteria and is audited separately.<br><br>' +
+    '<em>This tool does not evaluate individual patients and makes no recommendation ' +
+    'about whether any particular patient warrants imaging.</em> It describes the ' +
+    'shape of a caseload retrospectively, in aggregate.';
+
+  var rows = [
+    ['Persisting or increasing past six weeks', S.persist, false, false],
+    ['With nerve-root signs', S.root, false, false],
+    ['Received MRI or CT', S.adv, false, true],
+    ['Films only, nothing further', S.xray, true, true]
+  ];
+  var fh = '';
+  rows.forEach(function(r){
+    var pct = SAMPLE ? (r[1]/SAMPLE)*100 : 0;
+    fh += '<div class="frow' + (r[2]?' ind':'') + '"><div class="ftop"><span>' +
+      r[0] + '</span><span>' + r[1] + ' of ' + SAMPLE + '</span></div>' +
+      '<div class="ftrack"><div class="ffill' + (r[3]?' acc':'') +
+      '" style="width:' + pct + '%"></div></div></div>';
+  });
+  document.getElementById('funnel').innerHTML = fh;
+
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+}
+
+resetState();
+render();
+</script>
+</div>
+</body>
+</html>

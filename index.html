@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Decompression Mastery — The authority in non-surgical spinal decompression training for chiropractors. Built by Dr. Eric Kaplan & Dr. Perry Bard. 250+ clinics. 46 states." />
+  <title>Decompression Mastery | Non-Surgical Spinal Decompression Training for Chiropractors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Canvas */
+      --canvas:        #ffffff;
+      --canvas-soft:   #f4f6f9;
+      --canvas-mid:    #eaecf0;
+
+      /* Navy — DCOA primary */
+      --navy:          #0B1F3A;
+      --navy-2:        #122548;
+      --navy-3:        #1a3260;
+      --navy-light:    #1e4080;
+      --navy-tint:     rgba(11,31,58,0.06);
+      --navy-dim:      rgba(11,31,58,0.45);
+
+      /* Red — DCOA accent */
+      --red:           #C0392B;
+      --red-dark:      #922B21;
+      --red-tint:      rgba(192,57,43,0.08);
+
+      /* Text */
+      --ink:           #0B1F3A;
+      --ink-2:         #2c3e50;
+      --mute:          #6b7a8d;
+      --faint:         #a0aab4;
+      --hairline:      #d8dde5;
+      --hairline-soft: #eef0f3;
+
+      /* Gold — kept for DISC Centers credibility marks only */
+      --gold:          #C9A84C;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--canvas);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════
+       UTILITY BAR
+    ══════════════════════════════════ */
+    .utility-bar {
+      background: var(--navy);
+      height: 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px;
+    }
+
+    .utility-bar-left {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      display: flex; align-items: center; gap: 20px;
+    }
+
+    .utility-bar-left span { color: rgba(255,255,255,0.3); }
+
+    .utility-bar-right {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: 1px; color: rgba(255,255,255,0.8);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .utility-bar-right a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .utility-bar-right a:hover { color: #fff; }
+
+    /* ══════════════════════════════════
+       NAV
+    ══════════════════════════════════ */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 68px;
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px;
+      box-shadow: 0 2px 12px rgba(11,31,58,0.06);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 40px; height: 40px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark svg { width: 22px; height: 22px; }
+
+    .nav-brand-divider {
+      width: 1px; height: 28px;
+      background: var(--hairline);
+    }
+
+    .nav-brand-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 17px;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--navy); line-height: 1.1;
+    }
+
+    .nav-brand-text span {
+      color: var(--mute); display: block;
+      font-size: 10px; letter-spacing: 3px; font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--mute); text-decoration: none;
+      transition: color 0.2s; position: relative;
+    }
+
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--navy);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--red); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 12px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 11px 24px; border: none; cursor: pointer;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; position: fixed;
+      top: 104px; left: 0; right: 0;
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
+      padding: 24px 24px 32px;
+      flex-direction: column; gap: 0; z-index: 99;
+      box-shadow: 0 8px 24px rgba(11,31,58,0.1);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      display: block; padding: 14px 0;
+      border-bottom: 1px solid var(--hairline-soft);
+      color: var(--navy); text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 18px;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .mobile-nav .mob-cta {
+      margin-top: 20px; background: var(--red); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 14px; border: none; cursor: pointer;
+      width: 100%; text-align: center; border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    .hero {
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      min-height: 560px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(192,57,43,0.12) 0%, transparent 50%),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    }
+
+    /* Subtle dot grid on hero */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative; z-index: 1;
+      padding: 80px 64px 80px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--red);
+    }
+
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 7vw, 108px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .hero-headline .accent { color: var(--red); }
+    .hero-headline .accent-light { color: rgba(255,255,255,0.35); }
+
+    .hero-body {
+      font-size: 17px; line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px; margin-bottom: 40px;
+    }
+
+    .hero-body strong { color: #fff; font-weight: 700; }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+
+    .btn-red {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--red); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 14px;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 17px 36px; text-decoration: none;
+      border: none; cursor: pointer; border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 13px;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 16px 28px; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    /* Hero right — form panel */
+    .hero-right {
+      position: relative; z-index: 1;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 48px 44px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hero-form-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 8px;
+    }
+
+    .hero-form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px; line-height: 1; text-transform: uppercase;
+      color: #fff; margin-bottom: 6px;
+    }
+
+    .hero-form-sub {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      margin-bottom: 24px; line-height: 1.5;
+    }
+
+    .hero-form-group { margin-bottom: 12px; }
+
+    .hero-form-group label {
+      display: block; font-size: 10px; font-weight: 700;
+      color: rgba(255,255,255,0.5); text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 5px;
+    }
+
+    .hero-form-group input {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+      font-family: 'Barlow', sans-serif; font-size: 14px;
+      color: #fff; outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .hero-form-group input::placeholder { color: rgba(255,255,255,0.25); }
+
+    .hero-form-group input:focus {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .hero-form-submit {
+      width: 100%; padding: 15px;
+      background: var(--red); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 14px;
+      letter-spacing: 3px; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 2px;
+      transition: background 0.2s; margin-top: 4px;
+    }
+
+    .hero-form-submit:hover { background: var(--red-dark); }
+
+    .hero-form-disclaimer {
+      font-size: 11px; color: rgba(255,255,255,0.25);
+      text-align: center; margin-top: 10px; line-height: 1.5;
+    }
+
+    /* Stats strip below hero */
+    .stats-strip {
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stats-strip-item {
+      padding: 28px 32px;
+      border-right: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    .stats-strip-item:last-child { border-right: none; }
+
+    .stats-strip-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px; color: var(--navy);
+      line-height: 1; display: block;
+    }
+
+    .stats-strip-num .unit { color: var(--red); }
+
+    .stats-strip-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--mute); margin-top: 4px; display: block;
+    }
+
+    .stats-strip-detail {
+      font-size: 12px; color: var(--faint);
+      margin-top: 4px; line-height: 1.4;
+    }
+
+    /* ══════════════════════════════════
+       RED ACCENT STRIP
+    ══════════════════════════════════ */
+    .accent-strip {
+      background: var(--red);
+      padding: 0 52px;
+      height: 48px;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+
+    .accent-strip-inner {
+      display: inline-flex; align-items: center;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap; gap: 0;
+    }
+
+    .accent-strip-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 12px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      padding: 0 28px;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ══════════════════════════════════
+       SHARED SECTION STYLES
+    ══════════════════════════════════ */
+    .section { padding: 96px 52px; }
+    .section-navy { background: var(--navy); }
+    .section-soft { background: var(--canvas-soft); }
+    .section-white { background: var(--canvas); }
+
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+    }
+
+    .section-eyebrow-navy {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .section-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 2px; background: currentColor;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 0.95; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title-navy { color: #fff; }
+    .section-title .accent { color: var(--red); }
+    .section-title .accent-navy { color: rgba(255,255,255,0.3); }
+
+    .section-body {
+      font-size: 16px; line-height: 1.75;
+      color: var(--mute); max-width: 600px;
+    }
+
+    .section-body-navy { color: rgba(255,255,255,0.5); }
+
+    /* ══════════════════════════════════
+       MARKET SECTION
+    ══════════════════════════════════ */
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .market-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; margin-top: 48px;
+      border-top: 2px solid var(--navy);
+    }
+
+    .market-stat {
+      padding: 24px 0 24px;
+      border-right: 1px solid var(--hairline);
+      padding-right: 24px; margin-right: 24px;
+    }
+
+    .market-stat:last-child { border-right: none; }
+
+    .market-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px; color: var(--navy);
+      line-height: 1; display: block;
+    }
+
+    .market-stat-label {
+      font-size: 13px; color: var(--mute);
+      line-height: 1.4; margin-top: 4px;
+    }
+
+    .market-cards { display: flex; flex-direction: column; gap: 2px; }
+
+    .market-card {
+      background: var(--canvas-soft);
+      padding: 28px 32px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .market-card:hover {
+      border-left-color: var(--red);
+      background: var(--canvas);
+    }
+
+    .market-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 17px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--navy); margin-bottom: 8px;
+    }
+
+    .market-card-body {
+      font-size: 14px; line-height: 1.7; color: var(--mute);
+    }
+
+    .market-card-cite {
+      font-size: 11px; color: var(--faint);
+      margin-top: 10px; font-style: italic;
+    }
+
+    /* ══════════════════════════════════
+       EVIDENCE SECTION (navy bg)
+    ══════════════════════════════════ */
+    .evidence-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 56px;
+    }
+
+    .evidence-card {
+      background: rgba(255,255,255,0.04);
+      padding: 36px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.25s, background 0.25s;
+      position: relative;
+    }
+
+    .evidence-card:hover {
+      border-top-color: var(--red);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .evidence-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px; color: rgba(255,255,255,0.05);
+      line-height: 1; margin-bottom: -10px;
+    }
+
+    .evidence-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 18px;
+      text-transform: uppercase; color: #fff;
+      margin-bottom: 12px; line-height: 1.15;
+    }
+
+    .evidence-body {
+      font-size: 13px; line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .evidence-body strong { color: rgba(255,255,255,0.85); }
+
+    .evidence-cite {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 11px; color: rgba(255,255,255,0.25);
+      font-style: italic; line-height: 1.4;
+    }
+
+    /* ══════════════════════════════════
+       VS COMPARISON (white bg)
+    ══════════════════════════════════ */
+    .vs-table {
+      margin-top: 56px;
+      border: 1px solid var(--hairline);
+    }
+
+    .vs-header-row {
+      display: grid; grid-template-columns: 200px 1fr 48px 1fr;
+      background: var(--canvas-soft);
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .vs-header-cell {
+      padding: 16px 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 13px;
+      letter-spacing: 3px; text-transform: uppercase;
+    }
+
+    .vs-header-category { color: var(--faint); }
+    .vs-header-general { color: var(--mute); }
+    .vs-header-specialist { color: var(--navy); background: rgba(11,31,58,0.04); }
+
+    .vs-row {
+      display: grid; grid-template-columns: 200px 1fr 48px 1fr;
+      border-bottom: 1px solid var(--hairline-soft);
+    }
+
+    .vs-row:last-child { border-bottom: none; }
+
+    .vs-cell {
+      padding: 20px 24px;
+      font-size: 14px; line-height: 1.5;
+    }
+
+    .vs-cell-category {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--faint);
+      display: flex; align-items: center;
+      background: var(--canvas-soft);
+      border-right: 1px solid var(--hairline);
+    }
+
+    .vs-cell-general {
+      color: var(--mute);
+      border-right: 1px solid var(--hairline-soft);
+    }
+
+    .vs-cell-general strong { color: var(--ink-2); font-weight: 600; }
+
+    .vs-cell-mid {
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 11px;
+      writing-mode: vertical-rl;
+      letter-spacing: 2px;
+      border-right: none;
+    }
+
+    .vs-cell-specialist {
+      color: var(--navy);
+      background: rgba(11,31,58,0.02);
+    }
+
+    .vs-cell-specialist strong { color: var(--navy); font-weight: 700; }
+
+    /* ══════════════════════════════════
+       PRACTICE BENEFITS (soft bg)
+    ══════════════════════════════════ */
+    .practice-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 56px;
+    }
+
+    .practice-card {
+      background: var(--canvas);
+      padding: 40px 36px;
+      position: relative;
+      border-top: 3px solid var(--hairline);
+      transition: border-color 0.25s;
+    }
+
+    .practice-card:hover { border-top-color: var(--navy); }
+
+    .practice-card-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px; color: var(--hairline-soft);
+      position: absolute; top: 12px; right: 20px;
+      line-height: 1;
+    }
+
+    .practice-card-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+
+    .practice-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 20px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--navy); margin-bottom: 10px; line-height: 1.1;
+    }
+
+    .practice-card-body {
+      font-size: 14px; line-height: 1.7; color: var(--mute);
+    }
+
+    .practice-card-body strong { color: var(--ink); }
+
+    /* ══════════════════════════════════
+       FOUNDERS (white bg)
+    ══════════════════════════════════ */
+    .founders-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 56px;
+    }
+
+    .founder-card {
+      padding: 48px 44px;
+      background: var(--canvas-soft);
+      border-top: 4px solid var(--navy);
+      position: relative;
+    }
+
+    .founder-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px; line-height: 1;
+      color: var(--navy); margin-bottom: 4px;
+    }
+
+    .founder-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 20px; display: block;
+    }
+
+    .founder-bio {
+      font-size: 15px; line-height: 1.75;
+      color: var(--mute); margin-bottom: 24px;
+    }
+
+    .founder-bio strong { color: var(--ink); }
+
+    .founder-creds { display: flex; flex-direction: column; gap: 8px; }
+
+    .cred {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--mute); line-height: 1.4;
+    }
+
+    .cred-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════
+       TESTIMONIAL (navy bg)
+    ══════════════════════════════════ */
+    .testimonial-wrap {
+      background: var(--navy);
+      padding: 72px 52px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .testimonial-wrap::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(192,57,43,0.08);
+    }
+
+    .testimonial-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 100px; line-height: 0.7;
+      color: rgba(255,255,255,0.07);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 22px; line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+      font-style: italic; font-weight: 500;
+      max-width: 720px; margin: 0 auto 28px;
+    }
+
+    .testimonial-author {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 13px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ══════════════════════════════════
+       FORM / ANALYSIS (white bg, split)
+    ══════════════════════════════════ */
+    .form-section {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 96px; align-items: center;
+      padding: 96px 52px;
+      background: var(--canvas);
+    }
+
+    .form-promises {
+      margin-top: 32px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+
+    .form-promise {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: var(--mute); line-height: 1.5;
+    }
+
+    .form-promise-check {
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      font-size: 11px; color: var(--navy); font-weight: 700;
+    }
+
+    .form-card {
+      background: var(--canvas-soft);
+      border: 1px solid var(--hairline);
+      border-top: 4px solid var(--navy);
+      padding: 44px 40px;
+    }
+
+    .form-card-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 8px;
+    }
+
+    .form-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px; line-height: 1; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 6px;
+    }
+
+    .form-card > p {
+      font-size: 13px; color: var(--mute);
+      margin-bottom: 24px; line-height: 1.6;
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-group label {
+      display: block; font-size: 10px; font-weight: 700;
+      color: var(--ink-2); text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%; padding: 13px 14px;
+      border: 1.5px solid var(--hairline);
+      font-family: 'Barlow', sans-serif; font-size: 15px;
+      color: var(--ink); background: var(--canvas);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none; border-radius: 0; -webkit-appearance: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(11,31,58,0.08);
+    }
+
+    .form-group input::placeholder { color: var(--faint); }
+
+    .form-submit {
+      width: 100%; padding: 17px;
+      background: var(--red); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 14px;
+      letter-spacing: 3px; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 2px;
+      transition: background 0.2s; margin-top: 4px;
+    }
+
+    .form-submit:hover { background: var(--red-dark); }
+
+    .form-disclaimer {
+      font-size: 11px; color: var(--faint);
+      text-align: center; margin-top: 10px; line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════
+       DCOA CREDIBILITY BAR
+    ══════════════════════════════════ */
+    .dcoa-bar {
+      background: var(--canvas-soft);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      padding: 24px 52px;
+      display: flex; align-items: center;
+      justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+
+    .dcoa-item {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .dcoa-item-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      background: var(--navy);
+      padding: 64px 52px 32px;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 56px;
+    }
+
+    .footer-brand {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+
+    .footer-logo-mark {
+      width: 36px; height: 36px; background: var(--red);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    .footer-logo-mark svg { width: 20px; height: 20px; }
+
+    .footer-brand-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;
+      color: #fff; line-height: 1.1;
+    }
+
+    .footer-brand-name span { color: rgba(255,255,255,0.35); display: block; font-size: 9px; letter-spacing: 3px; }
+
+    .footer-desc { font-size: 14px; color: rgba(255,255,255,0.3); line-height: 1.7; margin-bottom: 0; }
+
+    .footer-col-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 11px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 18px;
+    }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-links a {
+      font-size: 14px; color: rgba(255,255,255,0.4);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+    /* ══════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════ */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .stagger.visible > *:nth-child(1) { opacity:1;transform:none;transition-delay:0s }
+    .stagger.visible > *:nth-child(2) { opacity:1;transform:none;transition-delay:0.08s }
+    .stagger.visible > *:nth-child(3) { opacity:1;transform:none;transition-delay:0.16s }
+    .stagger.visible > *:nth-child(4) { opacity:1;transform:none;transition-delay:0.24s }
+    .stagger.visible > *:nth-child(5) { opacity:1;transform:none;transition-delay:0.32s }
+    .stagger.visible > *:nth-child(6) { opacity:1;transform:none;transition-delay:0.4s }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .utility-bar { padding: 0 24px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding: 36px 24px; }
+      .hero-left { padding: 56px 24px 32px; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .market-grid { grid-template-columns: 1fr; gap: 48px; }
+      .market-stats { grid-template-columns: repeat(3, 1fr); }
+      .evidence-grid { grid-template-columns: 1fr 1fr; }
+      .practice-grid { grid-template-columns: 1fr 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .form-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .section { padding: 72px 24px; }
+      .dcoa-bar { padding: 20px 24px; gap: 24px; }
+      footer { padding: 48px 24px 28px; }
+      .testimonial-wrap { padding: 56px 24px; }
+      .accent-strip { padding: 0 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .utility-bar { display: none; }
+      .mobile-nav { top: 68px; }
+      .evidence-grid { grid-template-columns: 1fr; }
+      .practice-grid { grid-template-columns: 1fr; }
+      .market-stats { grid-template-columns: 1fr; gap: 0; }
+      .market-stat { border-right: none; border-bottom: 1px solid var(--hairline); padding-bottom: 16px; margin-bottom: 16px; padding-right: 0; margin-right: 0; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn-red, .btn-outline-white { width: 100%; justify-content: center; }
+      .form-card { padding: 32px 20px; }
+      .vs-table { overflow-x: auto; }
+      .vs-header-row, .vs-row { grid-template-columns: 120px 1fr 36px 1fr; }
+      .vs-cell { padding: 14px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="utility-bar-left">
+    <span>DISC Centers of America</span>
+    <span>·</span>
+    <span>Concierge Coaches</span>
+    <span>·</span>
+    <span>National Spinal Decompression Certification</span>
+  </div>
+  <div class="utility-bar-right">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3-8.57A2 2 0 0 1 3.11 1.4h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+    <a href="tel:8889909660">(888) 990-9660</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 36 36" fill="none">
+        <rect x="13" y="2" width="10" height="6" rx="1.5" fill="white"/>
+        <rect x="11" y="5" width="14" height="2" rx="1" fill="white" opacity="0.4"/>
+        <rect x="13" y="10" width="10" height="6" rx="1.5" fill="white"/>
+        <rect x="11" y="13" width="14" height="2" rx="1" fill="white" opacity="0.4"/>
+        <rect x="13" y="18" width="10" height="6" rx="1.5" fill="white"/>
+        <rect x="11" y="21" width="14" height="2" rx="1" fill="white" opacity="0.4"/>
+        <rect x="13" y="26" width="10" height="6" rx="1.5" fill="white"/>
+      </svg>
+    </div>
+    <div class="nav-brand-divider"></div>
+    <div class="nav-brand-text">
+      Decompression Mastery
+      <span>By Concierge Coaches</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#evidence">The Science</a></li>
+    <li><a href="#vs">Why Specialist</a></li>
+    <li><a href="#practice">Practice Benefits</a></li>
+    <li><a href="#founders">About</a></li>
+  </ul>
+  <a href="#analysis" class="nav-cta">Free Program Analysis</a>
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#evidence" onclick="closeNav()">The Science</a>
+  <a href="#vs" onclick="closeNav()">Why Specialist</a>
+  <a href="#practice" onclick="closeNav()">Practice Benefits</a>
+  <a href="#founders" onclick="closeNav()">About</a>
+  <a href="#analysis" onclick="closeNav()">Free Analysis</a>
+  <button class="mob-cta" onclick="closeNav()">Free Program Analysis</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Non-Surgical Spinal Decompression
+    </div>
+    <h1 class="hero-headline">
+      Master<br>
+      <span class="accent">Decompression.</span><br>
+      <span class="accent-light">Own Your</span><br>
+      Market.
+    </h1>
+    <p class="hero-body">
+      The highest-value cases in chiropractic are in your market right now. Patients scheduled for surgery. Patients with failed procedures. Patients who have been told nothing can be done. <strong>The practices getting those cases made one decision — they became disc specialists.</strong>
+    </p>
+    <div class="hero-actions">
+      <a href="#analysis" class="btn-red">Get Your Free Program Analysis →</a>
+      <a href="#evidence" class="btn-outline-white">See the Evidence</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-form-label">Free — No Obligation</div>
+    <div class="hero-form-title">Get Your Free<br>Program Analysis</div>
+    <p class="hero-form-sub">Dr. Kaplan or Dr. Bard will personally review your program and be in touch directly.</p>
+    <form id="heroForm">
+      <div class="hero-form-group">
+        <label for="hFirstName">First Name</label>
+        <input type="text" id="hFirstName" name="firstName" placeholder="John" required />
+      </div>
+      <div class="hero-form-group">
+        <label for="hLastName">Last Name</label>
+        <input type="text" id="hLastName" name="lastName" placeholder="Smith" required />
+      </div>
+      <div class="hero-form-group">
+        <label for="hEmail">Email Address</label>
+        <input type="email" id="hEmail" name="email" placeholder="dr.smith@yourpractice.com" required />
+      </div>
+      <div class="hero-form-group">
+        <label for="hPhone">Phone Number</label>
+        <input type="tel" id="hPhone" name="phone" placeholder="(555) 000-0000" required />
+      </div>
+      <button type="submit" class="hero-form-submit">Request My Free Analysis →</button>
+    </form>
+    <p class="hero-form-disclaimer">Complimentary &middot; No obligation &middot; No sales pressure</p>
+  </div>
+</section>
+
+<!-- RED TICKER -->
+<div class="accent-strip">
+  <div class="accent-strip-inner">
+    <div class="accent-strip-item">Non-Surgical Spinal Decompression</div>
+    <div class="accent-strip-item">National Decompression Certification</div>
+    <div class="accent-strip-item">Neuropathy Profit Centers</div>
+    <div class="accent-strip-item">Cash Practice Systems</div>
+    <div class="accent-strip-item">Disc Specialist Positioning</div>
+    <div class="accent-strip-item">MD & Surgeon Referrals</div>
+    <div class="accent-strip-item">250+ Clinics Nationwide</div>
+    <div class="accent-strip-item">Non-Surgical Spinal Decompression</div>
+    <div class="accent-strip-item">National Decompression Certification</div>
+    <div class="accent-strip-item">Neuropathy Profit Centers</div>
+    <div class="accent-strip-item">Cash Practice Systems</div>
+    <div class="accent-strip-item">Disc Specialist Positioning</div>
+    <div class="accent-strip-item">MD & Surgeon Referrals</div>
+    <div class="accent-strip-item">250+ Clinics Nationwide</div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-item">
+    <span class="stats-strip-num">250<span class="unit">+</span></span>
+    <span class="stats-strip-label">Decompression Clinics</span>
+    <p class="stats-strip-detail">Built & trained by Dr. Kaplan & Dr. Bard across 46 states</p>
+  </div>
+  <div class="stats-strip-item">
+    <span class="stats-strip-num">84</span>
+    <span class="stats-strip-label">Combined Years in Practice</span>
+    <p class="stats-strip-detail">As clinicians, trainers, and practice builders</p>
+  </div>
+  <div class="stats-strip-item">
+    <span class="stats-strip-num">$5<span class="unit">K+</span></span>
+    <span class="stats-strip-label">Average Patient Value</span>
+    <p class="stats-strip-detail">For properly structured decompression programs</p>
+  </div>
+  <div class="stats-strip-item">
+    <span class="stats-strip-num">20</span>
+    <span class="stats-strip-label">New Patients Per Day</span>
+    <p class="stats-strip-detail">Dr. Bard's verified production — four consecutive years</p>
+  </div>
+</div>
+
+<!-- MARKET SECTION -->
+<section class="section section-white reveal" id="market">
+  <div class="market-grid">
+    <div>
+      <div class="section-eyebrow">The Market Opportunity</div>
+      <h2 class="section-title">The Patients Are There.<br><span class="accent">Most Practices Miss Them.</span></h2>
+      <p class="section-body">
+        Back pain is the leading cause of disability worldwide. But most chiropractors are competing for the same general patient while the highest-value cases in their market go to surgeons, pain clinics, or nowhere at all.
+      </p>
+      <div class="market-stats stagger">
+        <div class="market-stat">
+          <span class="market-stat-num">100M+</span>
+          <div class="market-stat-label">Americans with chronic back pain</div>
+        </div>
+        <div class="market-stat">
+          <span class="market-stat-num">40%</span>
+          <div class="market-stat-label">of back surgery patients experience continued pain post-surgery</div>
+        </div>
+        <div class="market-stat">
+          <span class="market-stat-num">80K</span>
+          <div class="market-stat-label">estimated new failed back surgery patients per year in the US</div>
+        </div>
+      </div>
+    </div>
+    <div class="market-cards stagger">
+      <div class="market-card">
+        <div class="market-card-title">Failed Back Surgery Syndrome</div>
+        <p class="market-card-body">Up to 40% of lumbar back surgeries result in persistent pain post-surgery — and the success rate of repeat surgeries drops dramatically with each procedure. These patients are actively searching for alternatives.</p>
+        <p class="market-card-cite">Inoue et al., Journal of Pain Research; StatPearls/NCBI</p>
+      </div>
+      <div class="market-card">
+        <div class="market-card-title">Pre-Surgical Patients Are Searching</div>
+        <p class="market-card-body">Patients with MRI findings, disc herniations, stenosis, and scheduled surgeries are actively searching for non-surgical alternatives. The practices capturing them are positioned as the disc specialist — not the general chiropractor.</p>
+        <p class="market-card-cite">Ferreira et al., Lancet Rheumatol 2023; GBD Study 2021</p>
+      </div>
+      <div class="market-card">
+        <div class="market-card-title">The Highest-Value Cases in Chiropractic</div>
+        <p class="market-card-body">Properly structured decompression programs generate $5,000+ per case versus $600–900 in general chiropractic. One case per month is $60,000 in additional annual revenue. Add neuropathy and the number multiplies.</p>
+        <p class="market-card-cite">DISC Centers of America clinical network data, 250+ clinics</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE SECTION (navy) -->
+<section class="section section-navy reveal" id="evidence">
+  <div class="section-eyebrow section-eyebrow-navy">Clinical Evidence</div>
+  <h2 class="section-title section-title-navy">What the Research<br><span class="accent">Actually Shows</span></h2>
+  <p class="section-body section-body-navy">Non-surgical spinal decompression has been validated in randomized controlled trials, peer-reviewed journals, and thousands of clinical cases. The evidence is real and documentable.</p>
+
+  <div class="evidence-grid stagger">
+    <div class="evidence-card">
+      <div class="evidence-num">01</div>
+      <div class="evidence-title">Pain Reduction & Disc Volume Decrease on MRI</div>
+      <p class="evidence-body">A prospective randomized controlled trial at Seoul National University Bundang Hospital found NSDT produced <strong>statistically significant reductions in pain intensity and measurable reduction in herniated disc volume on MRI</strong> vs. a pseudodecompression control group. (n=60 patients)</p>
+      <div class="evidence-cite">Choi, Pyung-Bok. Int'l Journal of Clinical Practice. 2022. doi:10.1155/2022/6343837</div>
+    </div>
+    <div class="evidence-card">
+      <div class="evidence-num">02</div>
+      <div class="evidence-title">Good to Excellent Outcomes for Disc Lesions</div>
+      <p class="evidence-body">A case series in the Journal of Contemporary Chiropractic found non-surgical decompression using the DRX9000 demonstrated <strong>good to excellent clinical outcomes</strong> for lumbar disc lesions, with pre/post MRI confirming measurable improvements in spinal canal dimensions and disc height.</p>
+      <div class="evidence-cite">Connolly et al., Journal of Contemporary Chiropractic, 2025. parker.edu</div>
+    </div>
+    <div class="evidence-card">
+      <div class="evidence-num">03</div>
+      <div class="evidence-title">Superior Outcomes vs. Standard PT Alone</div>
+      <p class="evidence-body">A single-blinded RCT found NSDT combined with conventional physical therapy produced <strong>significantly greater improvements in pain, lumbar range of motion, muscle endurance, and functional disability</strong> compared to physical therapy alone in lumbar radiculopathy patients.</p>
+      <div class="evidence-cite">BMC Musculoskeletal Disorders. PMC8924735. doi:10.1186/s12891-022-05196-x</div>
+    </div>
+    <div class="evidence-card">
+      <div class="evidence-num">04</div>
+      <div class="evidence-title">Validated in Military Medicine</div>
+      <p class="evidence-body">A retrospective chart review in Military Medicine covering March 2023 to July 2024 examined NSSD as a therapeutic modality for low back pain across multiple clinic types, reporting <strong>consistent pain improvements across provider types and settings</strong>.</p>
+      <div class="evidence-cite">Military Medicine, 2025. doi:10.1093/milmed/usaf116</div>
+    </div>
+    <div class="evidence-card">
+      <div class="evidence-num">05</div>
+      <div class="evidence-title">Conservative Care Reduces Surgical Escalation</div>
+      <p class="evidence-body">A 2022 study in Spine found that <strong>initial choice of conservative spinal care reduces escalation to surgical intervention</strong> among Medicare beneficiaries with chronic low back pain — reinforcing decompression care as a viable first-line alternative to surgery.</p>
+      <div class="evidence-cite">Whedon JM et al. Spine. 2022;47:E142-8. doi:10.1097/BRS.0000000000004118</div>
+    </div>
+    <div class="evidence-card">
+      <div class="evidence-num">06</div>
+      <div class="evidence-title">The Global Burden of Low Back Pain</div>
+      <p class="evidence-body">The Global Burden of Disease Study 2021 identified low back pain as the <strong>leading contributor to years lived with disability globally</strong> — affecting 619 million people in 2020, projected to 843 million by 2050. The scale of this market is a generational opportunity for disc specialists.</p>
+      <div class="evidence-cite">Ferreira ML et al. Lancet Rheumatol. 2023;5:e316-29. doi:10.1016/S2665-9913(23)00098-X</div>
+    </div>
+  </div>
+</section>
+
+<!-- VS COMPARISON (white) -->
+<section class="section section-white reveal" id="vs">
+  <div class="section-eyebrow">The Specialist Advantage</div>
+  <h2 class="section-title">General Chiropractic<br><span class="accent">vs. Disc Specialist</span></h2>
+  <p class="section-body">Every chiropractor wants the high-value cases. The ones getting them consistently made one decision — they stopped marketing as a generalist and became the recognized disc specialist in their market. That shift changes who refers to you, who finds you, and what they pay.</p>
+
+  <div class="vs-table">
+    <div class="vs-header-row">
+      <div class="vs-header-cell vs-header-category">Category</div>
+      <div class="vs-header-cell vs-header-general">General Chiropractor</div>
+      <div class="vs-header-cell" style="background:var(--navy);"></div>
+      <div class="vs-header-cell vs-header-specialist">Disc Specialist</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-category">Positioning</div>
+      <div class="vs-cell vs-cell-general"><strong>One of Many</strong> — competing on price, location, and insurance in a crowded market</div>
+      <div class="vs-cell vs-cell-mid">→</div>
+      <div class="vs-cell vs-cell-specialist"><strong>Category of One</strong> — the recognized non-surgical disc expert patients find first</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-category">Patient Value</div>
+      <div class="vs-cell vs-cell-general"><strong>$600 – $900</strong> per patient — insurance-capped, income tied to volume</div>
+      <div class="vs-cell vs-cell-mid">→</div>
+      <div class="vs-cell vs-cell-specialist"><strong>$5,000 – $6,000</strong> per case — structured cash programs, income tied to skill</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-category">Referrals</div>
+      <div class="vs-cell vs-cell-general"><strong>Passive word of mouth</strong> — slow, inconsistent, nearly impossible to scale</div>
+      <div class="vs-cell vs-cell-mid">→</div>
+      <div class="vs-cell vs-cell-specialist"><strong>MDs, surgeons & pain clinics</strong> — referring the cases they cannot help surgically</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-category">Surgical Cases</div>
+      <div class="vs-cell vs-cell-general"><strong>Lost to the OR</strong> — patients scheduled for fusion or discectomy, gone before you know</div>
+      <div class="vs-cell vs-cell-mid">→</div>
+      <div class="vs-cell vs-cell-specialist"><strong>You intercept them</strong> — pre-surgical patients with second thoughts find you first</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-cell-category">Revenue Model</div>
+      <div class="vs-cell vs-cell-general"><strong>Insurance-dependent</strong> — capped reimbursements, delayed payments, no ceiling on overhead</div>
+      <div class="vs-cell vs-cell-mid">→</div>
+      <div class="vs-cell vs-cell-specialist"><strong>Cash flow, not insurance flow</strong> — structured disc programs that step off the insurance treadmill</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE BENEFITS (soft bg) -->
+<section class="section section-soft reveal" id="practice">
+  <div class="section-eyebrow">Practice Benefits</div>
+  <h2 class="section-title">What Changes When You<br><span class="accent">Build It Right</span></h2>
+  <p class="section-body">A properly structured decompression practice does not just treat different patients — it operates differently. Higher case values, more consistent referrals, and a revenue model that does not depend on volume.</p>
+
+  <div class="practice-grid stagger">
+    <div class="practice-card">
+      <span class="practice-card-number">01</span>
+      <span class="practice-card-icon">💵</span>
+      <div class="practice-card-title">Higher Revenue Per Case</div>
+      <p class="practice-card-body">The average decompression case in a well-run disc specialty practice generates <strong>$5,000 or more</strong> — structured as a cash program. One case per month is $60,000 in additional annual revenue. Add neuropathy and laser, and the math changes the practice entirely.</p>
+    </div>
+    <div class="practice-card">
+      <span class="practice-card-number">02</span>
+      <span class="practice-card-icon">🏥</span>
+      <div class="practice-card-title">Surgical Referrals from MDs</div>
+      <p class="practice-card-body">Disc specialists attract referrals from orthopedic surgeons and neurologists — the pre-surgical patients with second thoughts, and the post-surgical patients still in pain. <strong>Cases most chiropractors never see</strong> because they were never positioned to receive them.</p>
+    </div>
+    <div class="practice-card">
+      <span class="practice-card-number">03</span>
+      <span class="practice-card-icon">📋</span>
+      <div class="practice-card-title">Systemized Clinical Workflow</div>
+      <p class="practice-card-body">The training installs clinical decision frameworks, patient communication scripts, consult and report-of-findings structure, and the operational workflow that turns decompression into a repeatable, staff-executable service. <strong>The entire infrastructure, not just the clinical knowledge.</strong></p>
+    </div>
+    <div class="practice-card">
+      <span class="practice-card-number">04</span>
+      <span class="practice-card-icon">🎓</span>
+      <div class="practice-card-title">National Decompression Certification</div>
+      <p class="practice-card-body">The National Spinal Decompression Certification — created by Dr. Kaplan and Dr. Bard — establishes clinical credibility with patients and referring physicians. <strong>Certification covers case selection, documentation, patient communication, and specialist positioning</strong> in your market.</p>
+    </div>
+    <div class="practice-card">
+      <span class="practice-card-number">05</span>
+      <span class="practice-card-icon">📈</span>
+      <div class="practice-card-title">A Network That Compounds</div>
+      <p class="practice-card-body">Joining DISC Centers of America means access to protocols refined across <strong>250+ clinics in 46 states</strong>. What works — and what does not — is already known. You are implementing a model that has been proven at scale, not building one from scratch.</p>
+    </div>
+    <div class="practice-card">
+      <span class="practice-card-number">06</span>
+      <span class="practice-card-icon">🔬</span>
+      <div class="practice-card-title">Evidence-Based Authority</div>
+      <p class="practice-card-body">Non-surgical spinal decompression is supported by published randomized controlled trials and peer-reviewed clinical outcomes research. <strong>The clinical credibility is real and documentable</strong> — and the training teaches you how to communicate it to patients and referral sources effectively.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS (white) -->
+<section class="section section-white reveal" id="founders">
+  <div class="section-eyebrow">Built by Doctors Who Did It</div>
+  <h2 class="section-title">Not Theory.<br><span class="accent">84 Years of Practice.</span></h2>
+  <p class="section-body">The difference between this training and every other seminar is who is teaching it. Dr. Kaplan and Dr. Bard did not study how to build decompression practices — they built them.</p>
+
+  <div class="founders-grid stagger">
+    <div class="founder-card">
+      <div class="founder-name">Dr. Eric Kaplan, D.C.</div>
+      <span class="founder-title">Co-Founder, DISC Centers of America</span>
+      <p class="founder-bio">Dr. Kaplan has spent over four decades building and scaling chiropractic specialty practices. As co-creator of the <strong>National Spinal Decompression Certification</strong> and founder of DISC Centers of America, he has trained more disc specialist chiropractors than anyone in the profession. His systems currently operate in <strong>250+ clinics across 46 states</strong>.</p>
+      <div class="founder-creds">
+        <div class="cred"><div class="cred-dot"></div>Co-Creator, National Spinal Decompression Certification</div>
+        <div class="cred"><div class="cred-dot"></div>Co-Founder, DISC Centers of America — 250+ clinics, 46 states</div>
+        <div class="cred"><div class="cred-dot"></div>Founding partner, Life University Spinal Decompression Clinic</div>
+        <div class="cred"><div class="cred-dot"></div>Author, The Ultimate Spinal Decompression (800+ pages)</div>
+        <div class="cred"><div class="cred-dot"></div>42+ years in clinical practice and coaching</div>
+      </div>
+    </div>
+    <div class="founder-card">
+      <div class="founder-name">Dr. Perry Bard, D.C.</div>
+      <span class="founder-title">Co-Founder, DISC Centers of America</span>
+      <p class="founder-bio">Dr. Bard averaged <strong>20 new patients per day for four consecutive years</strong> — a number most chiropractors consider impossible. His practice systems, built around disc specialization and decompression, are the operational backbone of the DISC Centers of America network and the foundation of what is taught at The Chiro Event.</p>
+      <div class="founder-creds">
+        <div class="cred"><div class="cred-dot"></div>20 new patients per day — 4 consecutive years (verified clinical production)</div>
+        <div class="cred"><div class="cred-dot"></div>Co-Creator, National Spinal Decompression Certification</div>
+        <div class="cred"><div class="cred-dot"></div>Co-Founder, DISC Centers of America</div>
+        <div class="cred"><div class="cred-dot"></div>Co-Author, The Ultimate Spinal Decompression</div>
+        <div class="cred"><div class="cred-dot"></div>42+ years in clinical practice and coaching</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-wrap">
+  <div class="testimonial-quote">"</div>
+  <p class="testimonial-text">Last year was my best year in 30 years of practice and The Chiro Event made a tremendous impact. Best decision ever.</p>
+  <div class="testimonial-author">Dr. Thomas Bianco — 5-Star Review</div>
+</div>
+
+<!-- FORM / ANALYSIS -->
+<section class="form-section" id="analysis">
+  <div class="reveal">
+    <div class="section-eyebrow">Complimentary Practice Analysis</div>
+    <h2 class="section-title">Find Out Where Your<br><span class="accent">Program Stands</span></h2>
+    <p class="section-body">Dr. Kaplan and Dr. Bard will personally review your decompression program — or help you build one from scratch. No cost, no obligation.</p>
+    <div class="form-promises">
+      <div class="form-promise"><div class="form-promise-check">✓</div>Personal review from Dr. Kaplan or Dr. Bard — not a staff member</div>
+      <div class="form-promise"><div class="form-promise-check">✓</div>Specific recommendations for your market and current setup</div>
+      <div class="form-promise"><div class="form-promise-check">✓</div>No sales pressure — requests fulfilled in order of inquiry</div>
+      <div class="form-promise"><div class="form-promise-check">✓</div>Backed by 84 combined years and 250+ clinic network data</div>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="form-card">
+      <div class="form-card-label">Free — No Obligation</div>
+      <h3>Request Your<br>Program Analysis</h3>
+      <p>Dr. Kaplan or Dr. Bard will be in touch personally.</p>
+      <form id="analysisForm" action="https://formspree.io/f/xeevazzy" method="POST">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="dr.smith@yourpractice.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required />
+        </div>
+        <button type="submit" class="form-submit">Request My Free Analysis →</button>
+      </form>
+      <p class="form-disclaimer">Complimentary &middot; No obligation &middot; No sales pressure</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-logo-mark">
+          <svg viewBox="0 0 36 36" fill="none">
+            <rect x="13" y="2" width="10" height="6" rx="1.5" fill="white"/>
+            <rect x="13" y="10" width="10" height="6" rx="1.5" fill="white"/>
+            <rect x="13" y="18" width="10" height="6" rx="1.5" fill="white"/>
+            <rect x="13" y="26" width="10" height="6" rx="1.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="footer-brand-name">
+          Decompression Mastery
+          <span>By Concierge Coaches</span>
+        </div>
+      </div>
+      <p class="footer-desc">The authority in non-surgical spinal decompression training for chiropractors. Built by practitioners who built it themselves.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Training</div>
+      <ul class="footer-links">
+        <li><a href="#evidence">Clinical Evidence</a></li>
+        <li><a href="#vs">Specialist Advantage</a></li>
+        <li><a href="#practice">Practice Benefits</a></li>
+        <li><a href="https://thechiroevent.com" target="_blank">The Chiro Event</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#founders">Dr. Kaplan & Dr. Bard</a></li>
+        <li><a href="https://disccentersofamerica.com" target="_blank">DISC Centers of America</a></li>
+        <li><a href="https://conciergecoaches.com" target="_blank">Concierge Coaches</a></li>
+        <li><a href="https://thechiroevent.com" target="_blank">TheChiroEvent.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:8889909660">(888) 990-9660</a></li>
+        <li><a href="#analysis">Request Free Analysis</a></li>
+        <li><a href="https://freechiroevent.com" target="_blank">FreeChiroEvent.com</a></li>
+        <li><a href="https://www.instagram.com/thechiroevent/" target="_blank">@thechiroevent</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Decompression Mastery · Concierge Coaches · DISC Centers of America. All rights reserved.</div>
+    <div class="footer-copy">Dr. Eric Kaplan, D.C. & Dr. Perry Bard, D.C.</div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+
+  // Hero form
+  const heroForm = document.getElementById('heroForm');
+  heroForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = heroForm.querySelector('.hero-form-submit');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/xeevazzy', {
+        method: 'POST',
+        body: new FormData(heroForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = 'Request Received — We Will Be In Touch';
+        btn.style.background = '#1a4a1a';
+      } else {
+        btn.textContent = 'Something went wrong — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.disabled = false;
+    }
+  });
+
+  // Form (analysis section)
+  const form = document.getElementById('analysisForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/xeevazzy', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = 'Request Received — We Will Be In Touch';
+        btn.style.background = '#1a4a1a';
+      } else {
+        btn.textContent = 'Something went wrong — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.disabled = false;
+    }
+  });
+
+  // Count-up
+  function animateCount(el, target, suffix = '') {
+    let start = 0;
+    const dur = 1600;
+    const step = ts => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(ease * parseFloat(target)) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.stats-strip-num, .market-stat-num').forEach(n => {
+          const raw = n.textContent;
+          const m = raw.match(/^(\d+)(.*)/);
+          if (m) animateCount(n, m[1], m[2]);
+        });
+        statsObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stats-strip, .market-stats').forEach(el => statsObs.observe(el));
+</script>
+</body>
+</html>
